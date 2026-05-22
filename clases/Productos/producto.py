@@ -15,3 +15,7 @@ class Producto(ABC):
     def mi_precio(self)-> float:
         return self.precio
 
+    @abstractmethod
+    def mi_codigo(self)-> float:
+        return self.codigoBarra
+    

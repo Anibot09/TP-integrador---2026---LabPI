@@ -7,3 +7,9 @@ class Carne(Producto):
         
     def mi_precio(self)-> float:
         return self.precio
+    
+    def mi_codigo(self)-> int:
+        return self.codigoBarra
+    
+    def mi_peso(self)-> int:
+        return self.peso
