@@ -10,4 +10,8 @@ class Producto(ABC):
         self.stock_min = st_min
         if type (self) is Producto:
             raise TypeError("No se puede instanciar la clase Producto")
+        
+    @abstractmethod
+    def mi_precio(self)-> float:
+        return self.precio
 
