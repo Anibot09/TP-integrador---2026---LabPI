@@ -12,7 +12,7 @@ class Carrito ():
     def agregarProducto(self, producto:str, cant:int):
         # verificacion de  que producto se refiere
         #verif gondola
-        gondola = self.gondolas[]
+        #gondola = self.gondolas[]
         try:
             #if producto in gondola:
             #    raise vacioError
