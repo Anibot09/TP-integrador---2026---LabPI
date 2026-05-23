@@ -1,0 +1,2 @@
+class vacioError(Exception):
+    pass

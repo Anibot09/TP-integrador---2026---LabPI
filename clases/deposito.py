@@ -1,4 +1,4 @@
-from Productos.producto import Producto
+from clases.Productos.producto import Producto
 
 class Deposito():
     def __init__(self, cod: int, st: int, nombreDeposito: str):
@@ -8,7 +8,7 @@ class Deposito():
         self.stock_reserva: dict[Producto, int] = {}
 
     def agregar_producto(self, producto, st: int):
-        st = self.stock_reserva [producto] 
+        #st = self.stock_reserva [producto] /esta linea generaba error porque inmediatamente perdes el valor st que te pasaron
         if producto in self.stock_reserva:
             self.stock_reserva[producto] += st
         else:
@@ -27,3 +27,6 @@ class Deposito():
 
     def nombre_deposito (self):
         return self.nombreDeposito
+    
+    def mi_reserva(self):
+        return self.stock_reserva
