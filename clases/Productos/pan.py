@@ -17,3 +17,9 @@ class Pan(Producto):
     
     def mis_bolsones(self)->int:
         return self.cant_bolsones
+    
+    def mi_nombre(self)-> str:
+        return self.nombre
+    
+    def mi_marca(self)-> str:
+        return self.marca

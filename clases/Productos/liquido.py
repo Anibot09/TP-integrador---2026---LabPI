@@ -11,4 +11,10 @@ class Liquido(Producto):
     def mi_codigo(self)-> int:
         return self.codigoBarra
     
+    def mi_nombre(self)-> str:
+        return self.nombre
+    
+    def mi_marca(self)-> str:
+        return self.marca
+    
     

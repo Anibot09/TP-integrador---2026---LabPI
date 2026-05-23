@@ -19,3 +19,10 @@ class Producto(ABC):
     def mi_codigo(self)-> float:
         return self.codigoBarra
     
+    @abstractmethod
+    def mi_nombre(self)-> str:
+        return self.nombre
+    
+    @abstractmethod
+    def mi_marca(self)-> str:
+        return self.marca
