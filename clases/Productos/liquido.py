@@ -17,4 +17,9 @@ class Liquido(Producto):
     def mi_marca(self)-> str:
         return self.marca
     
+    def __str__(self):
+        return f"{self.nombre} - {self.marca} - ${self.precio}"
+    
+    def mi_litro(self):
+        return self.cant_litros
     

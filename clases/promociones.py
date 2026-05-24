@@ -18,6 +18,9 @@ class Promociones:
 
         return resultado
 
+    def mis_promos(self):
+        return self.productos_promos
+    
 #    def agregar_promocion(self, codigo, promo):
 #        self.productos_promos[codigo] = {
 #            "producto" : Producto.mi_nombre,
