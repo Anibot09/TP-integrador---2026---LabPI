@@ -3,10 +3,10 @@ from clases.almacen import Almacen
 from clases.deposito import Deposito
 from clases.Productos.pan import Pan
 from clases.promociones import Promociones
-#p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)  
+p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)  
 #este funca
-
-promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
+print(p)
+"""promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
           712:{"producto": "Melba", "marca":"Terrabusi", "promo":"2x1"},
           708:{"producto": "Pepas", "marca":"Terepín", "promo":"2x1"}, 
           504:{"producto": "Sprite", "marca":"Coca-Cola Company", "promo":"30 descuento(2da/misma marca)"},
@@ -18,4 +18,8 @@ promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
 
 promociones = Promociones(promos)
 
-print(promociones.mis_productos_promos())
+print(promociones.mis_productos_promos())"""
+
+#dep = Deposito(234, 45, "Depot")
+
+#dep.agregar_producto(p, 12)

@@ -3,30 +3,34 @@ from clases.Productos.pan import Pan
 from clases.Productos.verdura import Verdura
 
 class Almacen():
-    def __init__(self, num, prod, promos):
+    def __init__(self, num, promos):
         self.num_id = num
-        self.producto = prod
         self.promociones = promos
        
-    def determinar_precio(self):#Toma en cuenta cantidades y peso para determinar precios de ciertos productos. 
-        if type(self.producto)== Carne: #Carnes
-            peso = self.producto.mi_precio()
-            bol = self.producto.mi_peso()
+    def determinar_precio(self, producto):#Toma en cuenta cantidades y peso para determinar precios de ciertos productos. 
+        if type(producto)== Carne: #Carnes
+            peso = producto.mi_precio()
+            bol = producto.mi_peso()
             precio_final = peso*bol
             return precio_final
-        elif type(self.producto)== Pan:#Panes
-            peso = self.producto.mi_precio()
-            bol = self.producto.mis_bolsones()
+        elif type(producto)== Pan:#Panes
+            peso = producto.mi_precio()
+            bol = producto.mis_bolsones()
             precio_final = peso*bol
             return precio_final
-        elif type(self.producto)== Verdura:#Verduras
-            peso = self.producto.mi_precio()
-            bol = self.producto.mi_peso()
+        elif type(producto)== Verdura:#Verduras
+            peso = producto.mi_precio()
+            bol = producto.mi_peso()
             precio_final = peso*bol
             return precio_final
             
-    def calcular_promociones(self):
-        pass
+    def calcular_promociones(self, producto):
+        if producto.mi_codigo() in self.promociones:
+            if self.promociones["promo"] == "2x1":
+                pass
+        else:
+            #print("Producto sin promoción")
+            return 0
     
     def monitorear_compra(): #chequea que el estado de los productos y gondolas al  realizar la compra
         pass
