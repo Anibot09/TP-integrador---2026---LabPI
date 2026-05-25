@@ -5,3 +5,6 @@ class Gondola():
         self.nombre = nom
         self.list_productos = productos
         self.cant_productos = cant_p
+    
+    def mis_productos(self):
+        return self.list_productos

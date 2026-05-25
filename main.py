@@ -5,15 +5,23 @@ from clases.Productos.pan import Pan
 from clases.Productos.producto_gral import Producto_gral
 from clases.Productos.liquido import Liquido
 from clases.promociones import Promociones
+from clases.carrito import Carrito
+from clases.Gondolas.gondola import Gondola
 
 p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)
 galle =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-perfume = Producto_gral(608, "magnolia", "iii", 9000, 15, 2)
+perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
+perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 15, 2)
 bebida =  Liquido(504, "Sprite", "Coca-Cola Company", 250, 13, 1, 500)
 #este funca
 #print(p)
 
-"""promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
+perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
+galletitas = Gondola(400, "Galletas", [galle], 1)
+
+Negocio = [perfumeria, galletitas]
+
+promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
           712:{"producto": "Melba", "marca":"Terrabusi", "promo":"2x1"},
           708:{"producto": "Pepas", "marca":"Terepín", "promo":"2x1"}, 
           504:{"producto": "Sprite", "marca":"Coca-Cola Company", "promo":"30 descuento(2da/misma marca)"},
@@ -23,9 +31,9 @@ bebida =  Liquido(504, "Sprite", "Coca-Cola Company", 250, 13, 1, 500)
           605:{"producto": "jazmín", "marca":"eee", "promo":"50 descuento"},
           608:{"producto": "magnolia", "marca":"iii", "promo":"50 descuento"}}
 
-promociones = Promociones(promos)"""
+promociones = Promociones(promos)
 
-#almacen = Almacen(654, promociones)
+almacen = Almacen(654, promociones)
 
 #prec = almacen.calcular_promociones(perfume, 3)
 #print(prec)
@@ -33,3 +41,6 @@ promociones = Promociones(promos)"""
 #dep = Deposito(234, 45, "Depot")
 
 #dep.agregar_producto(p, 12)
+
+carrito = Carrito(Negocio)
+carrito.agregarProducto("magnolia", 3, almacen)

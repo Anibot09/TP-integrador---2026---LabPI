@@ -5,3 +5,6 @@ class Panaderia():
         self.codigo = cod
         self.nombre = nom
         self.productos = panes
+    
+    def mis_productos(self):
+        return self.productos

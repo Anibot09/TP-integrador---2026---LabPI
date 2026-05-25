@@ -28,5 +28,9 @@ class Producto(ABC):
         return self.marca
     
     @abstractmethod
+    def mi_stock(self):
+        return self.stock
+    
+    @abstractmethod
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

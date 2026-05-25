@@ -24,5 +24,8 @@ class Pan(Producto):
     def mi_marca(self)-> str:
         return self.marca
     
+    def mi_stock(self):
+        return self.stock
+    
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

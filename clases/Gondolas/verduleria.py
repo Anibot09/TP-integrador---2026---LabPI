@@ -4,3 +4,6 @@ class Verduleria():
         self.codigo = cod
         self.nombre = nom
         self.productos = verduras
+        
+    def mis_productos(self):
+        return self.productos
