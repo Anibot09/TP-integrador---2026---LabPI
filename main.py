@@ -16,7 +16,7 @@ bebida =  Liquido(504, "Sprite", "Coca-Cola Company", 250, 13, 1, 500)
 #este funca
 #print(p)
 
-perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
+"""perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
 galletitas = Gondola(400, "Galletas", [galle], 1)
 
 Negocio = [perfumeria, galletitas]
@@ -44,3 +44,5 @@ almacen = Almacen(654, promociones)
 
 carrito = Carrito(Negocio)
 carrito.agregarProducto("magnolia", 3, almacen)
+carrito.agregarProducto("Melba", 3, almacen)
+carrito.eliminarProducto("magnolia", 1, almacen)"""
