@@ -16,16 +16,18 @@ class Deposito():
 
     def reponer_producto(self, producto, cantidad):#busca el producto en deposito si hay stock repone, sino
         st = self.stock_reserva [producto] #stock del producto en deposito
-        if producto in self.stock_reserva and cantidad <= st:
-            prods = []
-            self.stock_reserva[producto] -= cantidad
-            print(f"{cantidad} transferidos desde {self.nombreDeposito}")
-            prods.append(producto.mi_codigo())
-            prods.append(cantidad)
-            return prods 
-        else: 
-            if self.stock_reserva[producto] == 0:
-                return 0
+        if producto in self.stock_reserva:
+            st = self.stock_reserva [producto] #stock del producto en deposito
+            if cantidad <= st:
+                prods = []
+                self.stock_reserva[producto] -= cantidad
+                print(f"{cantidad} transferidos desde {self.nombreDeposito}")
+                prods.append(producto.mi_codigo())
+                prods.append(cantidad)
+                return prods 
+            else: 
+                if self.stock_reserva[producto] == 0:
+                    return 0
         return f"Quedan {self.stock_reserva[producto]} {self.stock_reserva[producto.mi_nombre()]} /n codigo: {self.stock_reserva[producto.mi_codigo()]}"
     
 

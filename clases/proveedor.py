@@ -13,5 +13,3 @@ class Proveedor:
         deposito.agregar_producto(prod, cant)
         return
     
-    def enviarReposicion(): 
-        pass

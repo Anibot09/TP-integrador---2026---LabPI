@@ -30,8 +30,8 @@ class Inventario():
             print("Producto no encontrado")
             return 2
     
-    def generarPedido(self, producto, cant, st)->Pedido:
-        if self.deposito.reponer_producto(producto, cant, st) == 0:
+    def generarPedido(self, producto, cant)->Pedido:
+        if self.deposito.reponer_producto(producto, cant) == 0:
             pedido = Pedido(producto, cant)
             return pedido
     
@@ -39,8 +39,8 @@ class Inventario():
         productos = []
         if self.chequearDisponibilidad(producto) == 0:
             if self.deposito.reponer_producto(producto, cant)== 0:
-                self.generarPedido(producto, cant)
-                print("pedido")
+                return False
+                #print("pedido")
             else:
                 productos = self.deposito.reponer_producto(producto, cant)
                 self.ubicarProducto(productos)

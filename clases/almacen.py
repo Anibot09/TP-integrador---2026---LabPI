@@ -5,6 +5,9 @@ from clases.Productos.liquido import Liquido
 from clases.promociones import Promociones
 from clases.carrito import Carrito
 from clases.inventario import Inventario
+from clases.proveedor import Proveedor
+from clases.pedido import Pedido
+from clases.deposito import Deposito
 from clases.errores import vacioError, no_encontradoError
 
 class Almacen():
@@ -80,7 +83,12 @@ class Almacen():
         elif operacion == "sumar":
             producto.modif_stock(stock_actual + cant)
 
-    def monitorear_compra(self, producto_nom, cant, carrito: Carrito, inventario: Inventario): #chequea que el estado de los productos y gondolas al  realizar la compra
+    def contactar_proveedor(self, pedido : Pedido, proveedor : Proveedor, dep : Deposito):
+        proveedor.recibirPedido_reposicion(pedido, dep)
+        return
+        
+    
+    def monitorear_compra(self, producto_nom, cant, carrito: Carrito, inventario: Inventario, proveedor : Proveedor, dep : Deposito): #chequea que el estado de los productos y gondolas al  realizar la compra
         gondolas = self.gondolas
         agregado = 0
         encontrado = 0
@@ -108,7 +116,12 @@ class Almacen():
             
         except vacioError:
                 print("Actualmente no tenemos ese producto, por favor espere para que repongamos. Intente agregarlo de vuelta")
-                inventario.reponerInternamente(producto, cant)
+                if inventario.reponerInternamente(producto, cant) == False:
+                    pedido = inventario.generarPedido(producto, cant)
+                    self.contactar_proveedor(pedido, proveedor, dep)
+                    inventario.reponerInternamente(producto, cant)#quizas innecesario/ preguntar el viernes
+                else: 
+                    ("Ya repusimos ingrese su compra de vuelta.")
                 return False        
         except no_encontradoError:
                 print("Producto no encontrado")
