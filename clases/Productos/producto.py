@@ -36,5 +36,10 @@ class Producto(ABC):
         return self.stock_min
     
     @abstractmethod
+    def modif_stock(self, nuevo_stock):
+        self.stock = nuevo_stock
+        return
+    
+    @abstractmethod
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

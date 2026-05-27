@@ -23,6 +23,10 @@ class Liquido(Producto):
     def mi_stock_min(self):
         return self.stock_min
     
+    def modif_stock(self, nuevo_stock):
+        self.stock = nuevo_stock
+        return
+    
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"
     

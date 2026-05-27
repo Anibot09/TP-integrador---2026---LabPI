@@ -36,7 +36,7 @@ class Carrito ():
                         self.productos.remove((producto, cant))
                         self.productos.append((producto, nueva_cantidad))
                         self.cant_productos -= cantidad
-                        self.total -= precio_final * cantidad
+                        self.total -= precio_final
 
                         return print(f"Cantidad ingresada del '{producto}' fue eliminada correctamente. Total de productos: {self.cant_productos}\n Sus productos: {self.productos} \n Precio total: {self.total}")
             else:

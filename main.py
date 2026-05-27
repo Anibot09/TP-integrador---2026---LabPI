@@ -7,16 +7,17 @@ from clases.Productos.liquido import Liquido
 from clases.promociones import Promociones
 from clases.carrito import Carrito
 from clases.Gondolas.gondola import Gondola
+from clases.inventario import Inventario
 
 p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)
 galle =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
 perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
-perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 15, 2)
+perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
 bebida =  Liquido(504, "Sprite", "Coca-Cola Company", 250, 13, 1, 500)
 #este funca
 #print(p)
-
-"""perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
+"""
+perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
 galletitas = Gondola(400, "Galletas", [galle], 1)
 
 Negocio = [perfumeria, galletitas]
@@ -33,18 +34,23 @@ promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
 
 promociones = Promociones(promos)
 
-almacen = Almacen(654, promociones)
+almacen = Almacen(654, promociones, Negocio)
 
 #prec = almacen.calcular_promociones(perfume, 3)
 #print(prec)
-"""
+
+
 dep = Deposito(234, 45, "Depot")
 
-dep.agregar_producto(p, 0)
-print(dep.mi_reserva())
-print(dep.reponer_producto(p,3))
+dep.agregar_producto(p, 15)
+#print(dep.mi_reserva())
+#print(dep.reponer_producto(p,3))
+inventario = Inventario(7654, dep, Negocio)
 
-#carrito = Carrito(Negocio)
+carrito = Carrito()
 #carrito.agregarProducto("magnolia", 3, almacen)
 #carrito.agregarProducto("Melba", 3, almacen)
-#carrito.eliminarProducto("magnolia", 1, almacen)"""
+#carrito.eliminarProducto("magnolia", 1, almacen)
+
+almacen.monitorear_compra("magnolia", 3, carrito, inventario)
+"""

@@ -10,12 +10,15 @@ class Inventario():
         self.deposito = dep
         self.gondolas = gond
     
+    def ubicarProducto(productos: list)->str:
+        pass
+    
     def chequearDisponibilidad(self, producto):
         try:
             encontrado = 0
             for gondola in self.gondolas:
                     for producto in gondola.mis_productos():
-                        if producto.mi_stock() < producto.mi_stock_min():
+                        if producto.mi_stock() <= producto.mi_stock_min():
                             encontrado += 1
                             return 0
                         else:
@@ -25,7 +28,7 @@ class Inventario():
         
         except no_encontradoError:
             print("Producto no encontrado")
-            return 
+            return 2
     
     def generarPedido(self, producto, cant, st)->Pedido:
         if self.deposito.reponer_producto(producto, cant, st) == 0:
@@ -37,11 +40,12 @@ class Inventario():
         if self.chequearDisponibilidad(producto) == 0:
             if self.deposito.reponer_producto(producto, cant)== 0:
                 self.generarPedido(producto, cant)
-                #
+                print("pedido")
             else:
                 productos = self.deposito.reponer_producto(producto, cant)
-                return productos
+                self.ubicarProducto(productos)
+                print("Se pudo reponer correctamente.")
+                return True
     
             
-    def ubicarProducto(Producto)->str:
-        pass
+    

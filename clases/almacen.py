@@ -76,9 +76,9 @@ class Almacen():
     def actualizar_stock(self, producto, cant, operacion):
         stock_actual = producto.mi_stock()
         if operacion == "restar":
-            producto.modificar_stock(stock_actual - cant)
+            producto.modif_stock(stock_actual - cant)
         elif operacion == "sumar":
-            producto.modificar_stock(stock_actual + cant)
+            producto.modif_stock(stock_actual + cant)
 
     def monitorear_compra(self, producto_nom, cant, carrito: Carrito, inventario: Inventario): #chequea que el estado de los productos y gondolas al  realizar la compra
         gondolas = self.gondolas
