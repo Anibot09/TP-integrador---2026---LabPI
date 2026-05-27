@@ -14,12 +14,11 @@ class Deposito():
         else:
             self.stock_reserva[producto] = st
 
-    def reponer_producto(self, producto, cantidad, st: int):#busca el producto en deposito si hay stock repone, sino
+    def reponer_producto(self, producto, cantidad):#busca el producto en deposito si hay stock repone, sino
         st = self.stock_reserva [producto] #stock del producto en deposito
         if producto in self.stock_reserva and cantidad <= st:
             prods = []
-            st -= cantidad
-            self.stock_reserva[producto.mi_stock] -= cantidad
+            self.stock_reserva[producto] -= cantidad
             print(f"{cantidad} transferidos desde {self.nombreDeposito}")
             prods.append(producto.mi_codigo())
             prods.append(cantidad)

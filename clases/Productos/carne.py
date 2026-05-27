@@ -23,5 +23,8 @@ class Carne(Producto):
     def mi_stock(self):
         return self.stock
     
+    def mi_stock_min(self):
+        return self.stock_min
+    
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

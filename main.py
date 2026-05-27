@@ -37,12 +37,14 @@ almacen = Almacen(654, promociones)
 
 #prec = almacen.calcular_promociones(perfume, 3)
 #print(prec)
+"""
+dep = Deposito(234, 45, "Depot")
 
-#dep = Deposito(234, 45, "Depot")
+dep.agregar_producto(p, 0)
+print(dep.mi_reserva())
+print(dep.reponer_producto(p,3))
 
-#dep.agregar_producto(p, 12)
-
-carrito = Carrito(Negocio)
-carrito.agregarProducto("magnolia", 3, almacen)
-carrito.agregarProducto("Melba", 3, almacen)
-carrito.eliminarProducto("magnolia", 1, almacen)"""
+#carrito = Carrito(Negocio)
+#carrito.agregarProducto("magnolia", 3, almacen)
+#carrito.agregarProducto("Melba", 3, almacen)
+#carrito.eliminarProducto("magnolia", 1, almacen)"""
