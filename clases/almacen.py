@@ -124,8 +124,8 @@ class Almacen():
                     ("Ya repusimos ingrese su compra de vuelta.")
                 return False        
         except no_encontradoError:
-                print("Producto no encontrado")
-                return
+                print("Producto no encontrado, por favor vuelva ingresarlo")
+                return False
             
     def monitorear_eliminacion(self, producto, cant, carrito: Carrito, inventario: Inventario):
         if carrito.mis_productos() == []:

@@ -10,8 +10,53 @@ class Inventario():
         self.deposito = dep
         self.gondolas = gond
     
-    def ubicarProducto(productos: list)->str:
-        pass
+    def ubicarProducto(self, producto)->str: #falta actualizar cantidad, recibe list [producto, cant]
+        codigo = producto.mi_codigo()
+        for gondola in self.gondolas:
+            # Carnicería
+            if isinstance(producto, Carne) and "Carniceria" in gondola.nombre:
+                gondola.mis_productos().append(producto)
+                gondola.cant_productos += 1
+                break
+
+            # Panadería
+            elif isinstance(producto, Pan) and "Panaderia" in gondola.nombre:
+                gondola.mis_productos().append(producto)
+                gondola.cant_productos += 1
+                break
+
+            # Verdulería
+            elif isinstance(producto, Verdura) and "Verduleria" in gondola.nombre:
+                gondola.mis_productos().append(producto)
+                gondola.cant_productos += 1
+                break
+
+            # Gaseosas
+            elif isinstance(producto, Liquido) and "Gaseosas" in gondola.nombre:
+                gondola.mis_productos().append(producto)
+                gondola.cant_productos += 1
+                break
+
+            # Productos grales(Perfumería, Galletitas, Electro, Juguetes)
+            elif isinstance(producto, Producto_gral):
+                if 600 <= codigo <= 699 and "Perfumeria" in gondola.nombre:
+                    gondola.mis_productos().append(producto)
+                    gondola.cant_productos += 1
+                    break
+                elif 700 <= codigo <= 799 and "Galletitas" in gondola.nombre:
+                    gondola.mis_productos().append(producto)
+                    gondola.cant_productos += 1
+                    break
+                elif 800 <= codigo <= 899 and "Electro" in gondola.nombre:
+                    gondola.mis_productos().append(producto)
+                    gondola.cant_productos += 1
+                    break
+                elif 900 <= codigo <= 999 and "Juguetes" in gondola.nombre:
+                    gondola.mis_productos().append(producto)
+                    gondola.cant_productos += 1
+                    break
+
+        return print("Productos ubicados correctamente.")
     
     def chequearDisponibilidad(self, producto):
         try:

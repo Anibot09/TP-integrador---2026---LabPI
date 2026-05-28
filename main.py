@@ -1,68 +1,152 @@
 """TP Integrador - Lab. PI"""
 from clases.almacen import Almacen
 from clases.deposito import Deposito
+#Productos
 from clases.Productos.pan import Pan
 from clases.Productos.producto_gral import Producto_gral
 from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
-from clases.promociones import Promociones
-from clases.carrito import Carrito
+#Gondolas
+from clases.Gondolas.carniceria import Carniceria
+from clases.Gondolas.gaseosas import GondolaGaseosa
 from clases.Gondolas.gondola import Gondola
+from clases.Gondolas.panaderia import Panaderia
+from clases.Gondolas.verduleria import Verduleria
+
+from clases.promociones import Promociones
+from clases.proveedor import Proveedor
+from clases.carrito import Carrito
 from clases.inventario import Inventario
 
-p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)
-#Productos tipo(Prod. gral.): Galletitas
-galletita_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-galletita_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 15, 2)
-galletita_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 15, 2)
-#Productos tipo(Líquidos): Gaseosas
-bebida_1 =  Liquido(504, "Sprite", "Coca-Cola Company", 250, 13, 1, 500)
-bebida_2 =  Liquido(525, "Agua con gas", "Villa del Sur", 250, 13, 1, 500)
-bebida_3 =  Liquido(504, "Jugo", "Cepita", 250, 13, 1, 500)
-#Productos tipo: Carnes
-carne_1 = Carne(156, "Bandeja de Matambre", "-", 5000, 7, 2, 15)
-carne_2 = Carne(156, "Bandeja de Bondiola", "-", 5000, 7, 2, 15)
-carne_3 = Carne(156, "Bandeja de Vacío", "-", 15000, 7, 1, 15)
-perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
-perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
+def main():
 
-#este funca
-#print(p)
-"""
-perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
-galletitas = Gondola(400, "Galletas", [galle], 1)
+    p = Pan(123, "flauta", "nona", 200, 3, 1, 1, 1)
+    #Productos tipo(Prod. gral.): Galletitas
+    galletita_1 =  Producto_gral(712, "melba", "Terrabusi", 400, 15, 2)
+    galletita_2 =  Producto_gral(703, "pepitos", "Mondelez", 320, 76, 2)
+    galletita_3 =  Producto_gral(708, "pepas", "Terepin", 245, 23, 2)
+    #Productos tipo(Prod. gral.): Perfumes
+    perfume_1 =  Producto_gral(712, "melba", "Terrabusi", 400, 15, 2)
+    perfume_2 =  Producto_gral(703, "melba", "Terrabusi", 400, 15, 2)
+    perfume_3 =  Producto_gral(708, "melba", "Terrabusi", 400, 15, 2)
+    #Productos tipo(Prod. gral.): Electrodoméstico
+    galletita_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
+    galletita_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 15, 2)
+    galletita_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 15, 2)
+    #Productos tipo(Prod. gral.): Jueguetes
+    galletita_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
+    galletita_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 29, 2)
+    galletita_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 7, 2)
+    #Productos tipo(Líquidos): Gaseosas
+    bebida_1 =  Liquido(504, "sprite", "Coca-Cola Company", 250, 13, 1, 500)
+    bebida_2 =  Liquido(525, "agua con gas", "Villa del Sur", 250, 13, 1, 500)
+    bebida_3 =  Liquido(504, "jugo", "Cepita", 250, 13, 1, 500)
+    #Productos tipo: Carnes
+    carne_1 = Carne(156, "bandeja de matambre", "-", 5000, 7, 2, 15)
+    carne_2 = Carne(198, "bandeja de bondiola", "-", 5000, 7, 2, 15)
+    carne_3 = Carne(102, "bandeja de vacío", "-", 15000, 7, 1, 15)
+    perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
+    perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
 
-Negocio = [perfumeria, galletitas]
+    Carnes = Carniceria(100, "Carnicería", [])
+    #Panes = Panaderia()
+    #Verduras = Verduleria()
+    #Bebidas = GondolaGaseosa()
+    Perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
+    Galletitas = Gondola(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
+    Electrodomesticos = Gondola(800, "Electrodomesticos", [], 4)
+    Juguetes = Gondola(900, "Jugueteria", [], 8)
 
-promos = {703:{"producto": "Pepitos", "marca":"Mondelez", "promo":"2x1"},
-          712:{"producto": "Melba", "marca":"Terrabusi", "promo":"2x1"},
-          708:{"producto": "Pepas", "marca":"Terepín", "promo":"2x1"}, 
-          504:{"producto": "Sprite", "marca":"Coca-Cola Company", "promo":"30 descuento(2da/misma marca)"},
-          525:{"producto": "Agua con gas", "marca":"Villa del Sur", "promo":"30 descuento(2da/misma marca)"},
-          513:{"producto": "Jugo", "marca":"Cepita", "promo":"30 descuento(2da/misma marca)"},
-          612:{"producto": "lavanda", "marca":"aaa", "promo":"50 descuento"},
-          605:{"producto": "jazmín", "marca":"eee", "promo":"50 descuento"},
-          608:{"producto": "magnolia", "marca":"iii", "promo":"50 descuento"}}
+    Negocio = [Perfumeria, Galletitas]
 
-promociones = Promociones(promos)
+    promos = {703:{"producto": "pepitos", "marca":"Mondelez", "promo":"2x1"},
+            712:{"producto": "melba", "marca":"Terrabusi", "promo":"2x1"},
+            708:{"producto": "pepas", "marca":"Terepín", "promo":"2x1"}, 
+            504:{"producto": "sprite", "marca":"Coca-Cola Company", "promo":"30 descuento(2da/misma marca)"},
+            525:{"producto": "agua con gas", "marca":"Villa del Sur", "promo":"30 descuento(2da/misma marca)"},
+            513:{"producto": "jugo", "marca":"Cepita", "promo":"30 descuento(2da/misma marca)"},
+            612:{"producto": "lavanda", "marca":"aaa", "promo":"50 descuento"},
+            605:{"producto": "jazmín", "marca":"eee", "promo":"50 descuento"},
+            608:{"producto": "magnolia", "marca":"iii", "promo":"50 descuento"}}
 
-almacen = Almacen(654, promociones, Negocio)
+    promociones = Promociones(promos)
 
-#prec = almacen.calcular_promociones(perfume, 3)
-#print(prec)
+    almacen = Almacen(654, promociones, Negocio)
 
+    dep = Deposito(234, 45, "Depot")
+    proveedor = Proveedor("Productos por mayoR S.R.L.", "+54 9 11 3456-0987/prod_mayor455@gmail.com")
+    inventario = Inventario(7654, dep, Negocio)
 
-dep = Deposito(234, 45, "Depot")
+    carrito = Carrito()
+    
+    op = -1
+    while op != 0:
+        print("\n--Bienvenido su carrito--")
+        print("1. Ver productos (por góndola).")
+        print("2. Ver promociones de la semana.")
+        print("3. Agregar producto al carrito.")
+        print("4. Eliminar producto del carrito.")
+        print("5. Ir a pagar y finalizar compra.")
+        print("0. Cancelar compra.")
+        try:
+            op = int(input("Ingrese el numero de la acción que desea realizar:"))
+            if op<0 or op>5:
+                raise ValueError
+            match op:
+                case 1:
+                    pass
+                case 2:
+                    pass
+                case 3:
+                    while True:
+                        prod = str(input("\nIngrese el nombre del producto que desea agregar:")).lower()
+                        cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
+                        almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
+                        while True:
+                            try:
+                                opcion = int(input(
+                                    "\n1. Seguir agregando\n"
+                                    "2. Volver al menú\n"
+                                    "Seleccione una opción: "))
 
-dep.agregar_producto(p, 15)
-#print(dep.mi_reserva())
-#print(dep.reponer_producto(p,3))
-inventario = Inventario(7654, dep, Negocio)
+                                if opcion == 1 or opcion == 2:
+                                    break
+                            
+                                print("Ingrese 1 o 2")
 
-carrito = Carrito()
-#carrito.agregarProducto("magnolia", 3, almacen)
-#carrito.agregarProducto("Melba", 3, almacen)
-#carrito.eliminarProducto("magnolia", 1, almacen)
+                            except ValueError:
+                                print("Debe ingresar un número")
 
-almacen.monitorear_compra("magnolia", 3, carrito, inventario)
-"""
+                        if opcion == 2:
+                            break
+                case 4:
+                    while True:
+                        prod = str(input("\nIngrese el nombre del producto que desea agregar:"))
+                        cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
+                        almacen.monitorear_eliminacion(prod, cant, carrito, inventario, )
+                        while True:
+                            try:
+                                opcion = int(input(
+                                    "\n1. Seguir eliminando productos\n"
+                                    "2. Volver al menú\n"
+                                    "Seleccione una opción: "))
+
+                                if opcion == 1 or opcion == 2:
+                                    break
+                            
+                                print("Ingrese 1 o 2")
+
+                            except ValueError:
+                                print("Debe ingresar un número")
+
+                        if opcion == 2:
+                            break
+                case 5:
+                    pass
+                case 0:
+                    break
+        except ValueError:
+            print("Ingreso un valor inválido. Por favor, ingrese un número.")
+
+if __name__ == "__main__":
+    main()
