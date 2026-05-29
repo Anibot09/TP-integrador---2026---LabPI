@@ -41,7 +41,8 @@ def main():
     #Productos tipo(Líquidos): Gaseosas
     bebida_1 =  Liquido(504, "sprite", "Coca-Cola Company", 250, 13, 1, 500)
     bebida_2 =  Liquido(525, "agua con gas", "Villa del Sur", 250, 13, 1, 500)
-    bebida_3 =  Liquido(504, "jugo", "Cepita", 250, 13, 1, 500)
+    bebida_3 =  Liquido(509, "jugo", "Cepita", 250, 13, 1, 500)
+    bebida_3 =  Liquido(506, "coca-cola", "Coca-Cola Company", 300, 17, 1, 250)
     #Productos tipo: Carnes
     carne_1 = Carne(156, "bandeja de matambre", "-", 5000, 7, 2, 15)
     carne_2 = Carne(198, "bandeja de bondiola", "-", 5000, 7, 2, 15)
@@ -52,13 +53,13 @@ def main():
     Carnes = Carniceria(100, "Carniceria", [], 0)
     #Panes = Panaderia(200, "Panaderia", [], 0)
     #Verduras = Verduleria(300, "Verduleria", [], 0)
-    #Bebidas = GondolaGaseosa(400, "Bebidas", [], 0)
+    Bebidas = GondolaGaseosa(400, "Bebidas", [bebida_1, bebida_2, bebida_3], 0)
     Perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
     Galletitas = Gondola(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
     Electrodomesticos = Gondola(800, "Electrodomesticos", [], 4)
     Juguetes = Gondola(900, "Jugueteria", [], 8)
 
-    Negocio = [Perfumeria, Galletitas, Carnes]
+    Negocio = [Perfumeria, Galletitas, Carnes, Bebidas]
 
     promos = {703:{"producto": "pepitos", "marca":"Mondelez", "promo":"2x1"},
             712:{"producto": "melba", "marca":"Terrabusi", "promo":"2x1"},
@@ -140,7 +141,7 @@ def main():
                         print("\n1. Ver todas las promociones.")
                         print("2.Buscar promoción por producto")
                         print("0.Volver al menú")
-                        try:
+                        try: 
                             opcion=int(input("\nIngrese una opción: "))
                             if opcion == 1:
                                 carrito.ver_promociones(promociones, Negocio)
