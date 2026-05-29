@@ -84,7 +84,7 @@ class Almacen():
                                     precio_final = (cant/2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30)))
                                 else:
                                     sobrantes = cant % 2
-                                    precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio
+                                    precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio_unitario
                                 precio_bebidas = precio_final
                             else:
                                 print("No hay cantidad necesaria para agregar el descuento.")
@@ -155,7 +155,7 @@ class Almacen():
                 print("Producto no encontrado, por favor vuelva ingresarlo")
                 return False
             
-    def monitorear_eliminacion(self, producto, cant, carrito: Carrito, inventario: Inventario):
+    def monitorear_eliminacion(self, producto, cant, carrito: Carrito):
         if carrito.mis_productos() == []:
             print("Su carrito se encuentra vacío! Por favor agregue articulos para eliminar.")
             return False

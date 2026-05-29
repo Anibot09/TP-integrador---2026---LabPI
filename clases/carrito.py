@@ -89,6 +89,20 @@ class Carrito ():
         except no_encontradoError:
                 print("Producto no encontrado, por favor vuelva ingresarlo")
 
+    def ver_stock_producto(self, gondolas, producto_nom):
+        encontrado = 0
+        try:
+            for gondola in gondolas:
+                for producto in gondola.mis_productos():
+                    if producto_nom == producto.mi_nombre():#encuentra el producto con mismo nombre
+                        encontrado += 1
+                        stock = producto.mi_stock()
+                        print(f"Acotualmente contamos con {stock} articulos de este producto.")
+            if encontrado == 0:
+                raise no_encontradoError
+        except no_encontradoError:
+                print("Producto no encontrado, por favor vuelva ingresarlo")
+
     
     def mis_productos(self):
         return self.productos
