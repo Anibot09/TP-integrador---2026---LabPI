@@ -90,16 +90,18 @@ class Inventario():
 
             return "Productos ubicados correctamente."
     
-    def chequearDisponibilidad(self, producto):
+    def chequearDisponibilidad(self, producto, cant):
         try:
             encontrado = 0
             for gondola in self.gondolas:
-                    for producto in gondola.mis_productos():
-                        if producto.mi_stock() <= producto.mi_stock_min(): #no diponible, necesario reponer
-                            encontrado += 1
-                            return 0
-                        else:
-                            return 1 #hay stock
+                for producto in gondola.mis_productos():
+                    if producto.mi_stock() <= producto.mi_stock_min(): #no diponible, necesario reponer
+                        encontrado += 1
+                        return 0
+                    elif cant > producto.mi_stock():
+                        return 0 #hay stock, pero no suficiente
+                    else:
+                        return 1 # hay stock
             if encontrado == 0:
                 raise no_encontradoError
         
@@ -114,19 +116,18 @@ class Inventario():
     
     def reponerInternamente(self, producto, cant):
         productos = []
-        if self.chequearDisponibilidad(producto) == 0:
-            if self.deposito.reponer_producto(producto, cant)== 0:
+        if self.chequearDisponibilidad(producto, cant) == 0:
+            productos = self.deposito.reponer_producto(producto, cant)
+            if productos== 0:
                 return False
             else:
-                productos = self.deposito.reponer_producto(producto, cant)
                 self.ubicarProducto(productos)
                 print("Se pudo reponer correctamente.")
                 return True
-        else:
-            productos = self.deposito.reponer_producto(producto, cant)
-            self.ubicarProducto(productos)
-            print("Se pudo reponer correctamente.")
+        elif self.chequearDisponibilidad(producto) == 1:
             return True
+        else:
+            return False
     
             
     

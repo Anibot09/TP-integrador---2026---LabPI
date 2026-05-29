@@ -1,10 +1,11 @@
 from clases.Productos.producto import Producto
 
 class Deposito():
-    def __init__(self, cod: int, st: int, nombreDeposito: str):
+    def __init__(self, cod: int, st: int, nom):
         self.nombreDeposito = "sotano"
         self.cod = cod
         self.stock = st
+        self.nombreDeposito = nom
         self.stock_reserva: dict[Producto, int] = {}
 
     def agregar_producto(self, producto, st: int):
@@ -23,11 +24,10 @@ class Deposito():
                 print(f"{cantidad} transferidos desde {self.nombreDeposito}")
                 prods.append(producto)
                 prods.append(cantidad)
-                return prods 
-            else: 
-                if self.stock_reserva[producto] == 0:
-                    return 0
-        else: 
+                return prods
+            else:
+                return 0
+        else:
             return 0
         #return f"Quedan {self.stock_reserva[producto]} {self.stock_reserva[producto.mi_nombre()]} /n codigo: {self.stock_reserva[producto.mi_codigo()]}"
     

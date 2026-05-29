@@ -27,17 +27,17 @@ def main():
     galletita_2 =  Producto_gral(703, "pepitos", "Mondelez", 320, 76, 2)
     galletita_3 =  Producto_gral(708, "pepas", "Terepin", 245, 23, 2)
     #Productos tipo(Prod. gral.): Perfumes
-    perfume_1 =  Producto_gral(712, "melba", "Terrabusi", 400, 15, 2)
-    perfume_2 =  Producto_gral(703, "melba", "Terrabusi", 400, 15, 2)
-    perfume_3 =  Producto_gral(708, "melba", "Terrabusi", 400, 15, 2)
+    perfume_1 =  Producto_gral(712, "", "", 400, 15, 2)
+    perfume_2 =  Producto_gral(703, "", "", 400, 15, 2)
+    perfume_3 =  Producto_gral(708, "", "", 400, 15, 2)
     #Productos tipo(Prod. gral.): Electrodoméstico
     electro_1 =  Producto_gral(712, "microondas", "Phillips", 3000, 5, 1)
     electro_2 =  Producto_gral(703, "licuadora", "Terrabusi", 24000, 18, 1)
     electro_3 =  Producto_gral(708, "tostadora", "Terrabusi", 15000, 23, 1)
     #Productos tipo(Prod. gral.): Jueguetes
-    juguete_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-    juguete_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 29, 2)
-    juguete_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 7, 2)
+    juguete_1 =  Producto_gral(712, "", "", 400, 15, 2)
+    juguete_2 =  Producto_gral(703, "", "", 400, 29, 2)
+    juguete_3 =  Producto_gral(708, "", "", 400, 7, 2)
     #Productos tipo(Líquidos): Gaseosas
     bebida_1 =  Liquido(504, "sprite", "Coca-Cola Company", 250, 13, 1, 500)
     bebida_2 =  Liquido(525, "agua con gas", "Villa del Sur", 250, 13, 1, 500)

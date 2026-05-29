@@ -97,6 +97,7 @@ class Almacen():
                 for producto in gondola.mis_productos():
                     if producto_nom == producto.mi_nombre():#encuentra el producto con mismo nombre
                         encontrado += 1
+                        prod = producto
                         if cant <= producto.mi_stock(): # chequea que haya stock suficiente
                             precio_base = self.determinar_precio(producto, cant)
                             precio_final = self.calcular_promociones(producto, cant, precio_base)
@@ -116,10 +117,10 @@ class Almacen():
             
         except vacioError:
                 print("Actualmente no tenemos ese producto, por favor espere para que repongamos. Intente agregarlo de vuelta")
-                if inventario.reponerInternamente(producto, cant) == False:
-                    pedido = inventario.generarPedido(producto, cant)
+                if inventario.reponerInternamente(prod, cant) == False:
+                    pedido = inventario.generarPedido(prod, cant)
                     self.contactar_proveedor(pedido, proveedor, dep)
-                    inventario.reponerInternamente(producto, cant)#quizas innecesario/ preguntar el viernes
+                    inventario.reponerInternamente(prod, cant)#quizas innecesario/ preguntar el viernes
                 else: 
                     print("Ya repusimos ingrese su compra de vuelta.")
                 return False        
