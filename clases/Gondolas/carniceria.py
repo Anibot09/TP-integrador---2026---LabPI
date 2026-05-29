@@ -11,3 +11,9 @@ class Carniceria():
     
     def mi_nom(self):
         return self.nombre
+    
+    def mi_cantidad(self):
+        return self.cant_productos
+    
+    def actualizar_cantidad(self, nueva_cantidad):
+        self.cant_p += nueva_cantidad

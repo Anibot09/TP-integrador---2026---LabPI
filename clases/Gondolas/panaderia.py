@@ -1,13 +1,20 @@
 from clases.Productos.pan import Pan
 
 class Panaderia():
-    def __init__(self, cod, nom, panes:list[Pan]):
+    def __init__(self, cod, nom, panes:list[Pan], cant_p):
         self.codigo = cod
         self.nombre = nom
         self.productos = panes
+        self.cant_p = cant_p
     
     def mis_productos(self):
         return self.productos
     
     def mi_nom(self):
         return self.nombre
+    
+    def mi_cantidad(self):
+        return self.cant_productos
+    
+    def actualizar_cantidad(self, nueva_cantidad):
+        self.cant_p += nueva_cantidad

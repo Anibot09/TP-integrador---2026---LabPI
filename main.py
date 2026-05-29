@@ -31,13 +31,13 @@ def main():
     perfume_2 =  Producto_gral(703, "melba", "Terrabusi", 400, 15, 2)
     perfume_3 =  Producto_gral(708, "melba", "Terrabusi", 400, 15, 2)
     #Productos tipo(Prod. gral.): Electrodoméstico
-    galletita_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-    galletita_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 15, 2)
-    galletita_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 15, 2)
+    electro_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
+    electro_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 15, 2)
+    electro_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 15, 2)
     #Productos tipo(Prod. gral.): Jueguetes
-    galletita_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-    galletita_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 29, 2)
-    galletita_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 7, 2)
+    juguete_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
+    juguete_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 29, 2)
+    juguete_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 7, 2)
     #Productos tipo(Líquidos): Gaseosas
     bebida_1 =  Liquido(504, "sprite", "Coca-Cola Company", 250, 13, 1, 500)
     bebida_2 =  Liquido(525, "agua con gas", "Villa del Sur", 250, 13, 1, 500)
@@ -49,7 +49,7 @@ def main():
     perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
     perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
 
-    Carnes = Carniceria(100, "Carnicería", [], 0)
+    Carnes = Carniceria(100, "Carniceria", [], 0)
     #Panes = Panaderia()
     #Verduras = Verduleria()
     #Bebidas = GondolaGaseosa()
@@ -80,11 +80,6 @@ def main():
 
     carrito = Carrito()
     
-    inventario.ubicarProducto([carne_1, 5])
-    for gondola in Negocio:
-        for producto in gondola.mis_productos():
-            print(producto) 
-    """
     
     op = -1
     while op != 0:
@@ -121,15 +116,18 @@ def main():
                             while True:
                                 print("\n1. Volver a las góndolas")
                                 print("2. Volver al menú principal")
-                                opcion = int(input("Seleccione una opción: "))
+                                try:
+                                    opcion = int(input("Seleccione una opción: "))
 
-                                if opcion == 1:
-                                    return False
-                                elif opcion == 2:
-                                    break
-                                else:
-                                    raise ValueError
-
+                                    if opcion == 1:
+                                        return False
+                                    elif opcion == 2:
+                                        break
+                                    else:
+                                        raise ValueError
+                                except ValueError:
+                                    print("Ingrese 1 o 2")
+                            
                             if opcion == 2:
                                 break
 
@@ -188,6 +186,6 @@ def main():
                     break
         except ValueError:
             print("Ingreso un valor inválido. Por favor, ingrese un número.")
-"""
+
 if __name__ == "__main__":
     main()
