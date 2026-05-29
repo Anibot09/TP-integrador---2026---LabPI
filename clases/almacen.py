@@ -32,49 +32,75 @@ class Almacen():
             peso = producto.mi_peso()
             precio_final = (peso*precio)*cant
             return precio_final
-        #elif type(producto)== Liquido:#Bebidas
-        #    precio = producto.mi_precio()
-        #    litros = producto.mi_litro()
-        #    precio_final = (litros*precio)*cant
-        #    return precio_final
         else:
             precio = producto.mi_precio()
             precio_final = precio*cant
             return precio_final
         
             
-    def calcular_promociones(self, producto, cant, precio):#recibe el precio previemente determinado y de haber promocion la calcula
+    def calcular_promociones(self, carrito):#recibe el precio previemente determinado y de haber promocion la calcula
+        total = 0.0
+        precio_total = 0.0
+        precio_final = 0.0
+        precio_bebidas = 0.0
+        precio_galletitas = 0.0
+        precio_perfumes = 0.0
+        cant_galletitas = 0
+        cant_bebidas = 0
+        cant_perfumes = 0 
         promociones = self.promociones.mis_promos()
-        precio_unitario = producto.mi_precio()
-        if producto.mi_codigo() in promociones:
-            promo = promociones[producto.mi_codigo()] 
-            if promo['promo'] == "2x1":
-                if cant>=2:
-                    if cant % 2 == 0:
-                        precio_final = (cant/2)*precio_unitario 
+        for producto, cant in carrito.mis_productos(): #recorre mi lista de tuplas (el carrito)
+            precio_unitario = producto.mi_precio()  #defino el precio de cada producto
+            #veo si aplica alguna promo
+            if producto.mi_codigo() in promociones: 
+                promo = promociones[producto.mi_codigo()] 
+                #2x1
+                if promo['promo'] == "2x1":
+                    cant_galletitas += cant
+                    if cant_galletitas>=2:
+                        if cant_galletitas % 2 == 0:
+                            precio_final = (cant_galletitas/2)*precio_unitario 
+                        else:
+                            precio_final = ((cant_galletitas//2)+1)*precio_unitario #división de enteros //
+                        precio_galletitas = precio_final
                     else:
-                        precio_final = ((cant//2)+1)*precio_unitario #división de enteros //
-                    return precio_final
-                else:
-                    print("No hay cantidad necesaria para agregar el descuento.")
-                    return precio
-            elif promo["promo"] == "30 descuento(2da/misma marca)":
-                if cant>=2:
-                    if cant % 2 == 0:
-                        precio_final = (cant/2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30)))
-                    else:
-                        sobrantes = cant % 2
-                        precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio
-                    return precio_final
-                else:
-                    print("No hay cantidad necesaria para agregar el descuento.")
-                    return precio
-            elif promo["promo"] == "50 descuento":
-                precio_final = precio*0.50
-                return precio_final
-        else:
-            #("Producto sin promoción")
-            return precio
+                        print("No hay cantidad necesaria para agregar el descuento.")
+                        precio_total  += precio_unitario
+                #30%
+                elif promo["promo"] == "30 descuento(2da/misma marca)":
+                    cant_bebidas += cant
+                    gaseosas = []
+                    cant_por_marcas = []
+                    gaseosas.append((producto, cant))
+                    for gaseosa, cant in gaseosas:
+                        if gaseosa.mi_marca() not in cant_por_marcas:
+                            cant_por_marcas[gaseosa.mi_marca()] = cant
+                        else: 
+                            cant_por_marcas[gaseosa.mi_marca()] += cant
+                            for marca in cant_por_marcas:
+                                cant = cant_por_marcas[marca]
+                                if cant>=2:
+                                    if cant % 2 == 0:
+                                        precio_final = (cant/2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30)))
+                                    else:
+                                        sobrantes = cant % 2
+                                        precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio
+                                    precio_bebidas = precio_final
+                                else:
+                                    print("No hay cantidad necesaria para agregar el descuento.")
+                                    precio_total  += precio_unitario
+                #50%
+                elif promo["promo"] == "50 descuento":
+                    cant_perfumes += cant
+                    precio_final = precio_unitario*0.50
+                    precio_perfumes += precio_final
+            else:
+                #("Producto sin promoción")
+                precio_final = self.determinar_precio(producto, cant)
+                precio_total += precio_final
+        
+        total = precio_total + precio_galletitas + precio_bebidas + precio_perfumes
+        return total
     
     def actualizar_stock(self, producto, cant, operacion):
         stock_actual = producto.mi_stock()
@@ -100,9 +126,10 @@ class Almacen():
                         prod = producto
                         if cant <= producto.mi_stock(): # chequea que haya stock suficiente
                             precio_base = self.determinar_precio(producto, cant)
-                            precio_final = self.calcular_promociones(producto, cant, precio_base)
-                            carrito.agregarProducto(producto, cant, precio_final)
+                            carrito.agregarProducto(producto, cant, precio_base)
                             self.actualizar_stock(producto, cant, "sumar")
+                            total_promo = self.calcular_promociones(carrito)
+                            carrito.actualizar_Total(total_promo)
                             agregado +=1
                             return True
                         else:
@@ -116,7 +143,7 @@ class Almacen():
                 raise vacioError        
             
         except vacioError:
-                print("Actualmente no tenemos ese producto, por favor espere para que repongamos. Intente agregarlo de vuelta")
+                print("Producto sin stock! Por favor espere a que repongamos e intente agregarlo de vuelta")
                 if inventario.reponerInternamente(prod, cant) == False:
                     pedido = inventario.generarPedido(prod, cant)
                     self.contactar_proveedor(pedido, proveedor, dep)
@@ -130,13 +157,12 @@ class Almacen():
             
     def monitorear_eliminacion(self, producto, cant, carrito: Carrito, inventario: Inventario):
         if carrito.mis_productos() == []:
-            print("La lista se encuentra actualmente vacía, por favor agregue articulos para eliminar.")
+            print("Su carrito se encuentra vacío! Por favor agregue articulos para eliminar.")
             return False
         else:
-            precio_base = self.determinar_precio(producto, cant)
-            precio_final = self.calcular_promociones(producto, cant, precio_base)
-            carrito.eliminarProducto(producto, cant, precio_final)
-            self.actualizar_stock(producto, cant, "restar")
+            carrito.eliminarProducto(producto, cant)
+            total_promo = self.calcular_promociones(carrito)
+            carrito.actualizar_Total(total_promo)
             return True
     
 

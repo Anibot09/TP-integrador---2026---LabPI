@@ -2,7 +2,6 @@ from clases.Productos.producto import Producto
 
 class Deposito():
     def __init__(self, cod: int, st: int, nom):
-        self.nombreDeposito = "sotano"
         self.cod = cod
         self.stock = st
         self.nombreDeposito = nom

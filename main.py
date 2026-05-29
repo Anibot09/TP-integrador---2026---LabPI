@@ -62,7 +62,7 @@ def main():
 
     promos = {703:{"producto": "pepitos", "marca":"Mondelez", "promo":"2x1"},
             712:{"producto": "melba", "marca":"Terrabusi", "promo":"2x1"},
-            708:{"producto": "pepas", "marca":"Terepín", "promo":"2x1"}, 
+            708:{"producto": "pepas", "marca":"Terepín", "promo":"2x1"},
             504:{"producto": "sprite", "marca":"Coca-Cola Company", "promo":"30 descuento(2da/misma marca)"},
             525:{"producto": "agua con gas", "marca":"Villa del Sur", "promo":"30 descuento(2da/misma marca)"},
             513:{"producto": "jugo", "marca":"Cepita", "promo":"30 descuento(2da/misma marca)"},
@@ -85,7 +85,7 @@ def main():
     
     op = -1
     while op != 0:
-        print("\n--Bienvenido su carrito--")
+        print("\n☆〜-Bienvenido a SuperMarket IoT-〜☆")
         print("1. Ver productos (por góndola).")
         print("2. Ver promociones de la semana.")
         print("3. Agregar producto al carrito.")
@@ -93,7 +93,7 @@ def main():
         print("5. Ir a pagar y finalizar compra.")
         print("0. Cancelar compra.")
         try:
-            op = int(input("Ingrese el numero de la acción que desea realizar:"))
+            op = int(input("Ingrese el numero de la acción que desea realizar: "))
             if op<0 or op>5:
                 raise ValueError
             match op:
@@ -104,7 +104,7 @@ def main():
                         for i in range(max_gond):
                             print(f"{i}. {Negocio[i].mi_nom()}")
                         try:
-                            gond = int(input("\nIngrese el la gondola a la que desea ingresar. (Ingrese un numero de opcion): "))
+                            gond = int(input("\nIngrese el numero de la gondola a la que desea ingresar: "))
                             if gond<0 or gond>=max_gond:
                                 raise ValueError
                             
@@ -141,11 +141,11 @@ def main():
                         print("2.Buscar promoción por producto")
                         print("0.Volver al menú")
                         try:
-                            opcion=int(input("\nIngrese una opción (0 o 1 o 2):"))
+                            opcion=int(input("\nIngrese una opción: "))
                             if opcion == 1:
                                 carrito.ver_promociones(promociones, Negocio)
                             elif opcion == 2:
-                                prod = str(input("\nIngrese el nombre del producto:"))
+                                prod = str(input("\nIngrese el nombre del producto: "))
                                 carrito.ver_promociones_producto(promociones, Negocio, prod)
                             elif opcion == 0:
                                 break
@@ -155,7 +155,7 @@ def main():
                             print("Ingrese un numero, por favor.")
                 case 3:
                     while True:
-                        prod = str(input("\nIngrese el nombre del producto que desea agregar:")).lower()
+                        prod = str(input("\nIngrese el nombre del producto que desea agregar: ")).lower()
                         cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
                         almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
                         while True:
@@ -177,13 +177,13 @@ def main():
                             break
                 case 4:
                     while True:
-                        prod = str(input("\nIngrese el nombre del producto que desea agregar:"))
-                        cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
+                        prod = str(input("\nIngrese el nombre del producto que desea eliminar: "))
+                        cant = int(input("\nIngrese la cantidad de artículos que dese eliminar: "))
                         almacen.monitorear_eliminacion(prod, cant, carrito, inventario, )
                         while True:
                             try:
                                 opcion = int(input(
-                                    "\n1. Seguir eliminando productos\n"
+                                    "\n1. Eliminar otro producto/s\n"
                                     "2. Volver al menú\n"
                                     "Seleccione una opción: "))
 

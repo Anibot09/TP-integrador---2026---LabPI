@@ -17,19 +17,21 @@ class Carrito ():
         return True
                         
 
-    def eliminarProducto(self, producto_n:str, cantidad:int, precio_final: float): #string
+    def eliminarProducto(self, producto_n:str, cantidad:int): #string
         try:
             encontrado = 0
             for producto, cant in self.productos:
                 if producto_n == producto.mi_nombre():
                     encontrado += 1
+                    precio_final = producto.mi_precio()
+                    stock = producto.mi_stock()
                     if cant < cantidad:
                         raise vacioError
                     elif cant == cantidad:
                         self.productos.remove((producto, cant))
                         self.cant_productos -= cantidad
                         self.total -= precio_final * cant
-
+                        producto.modif_stock(stock - cant)
                         return print(f"Producto '{producto}' fue eliminado correctamente. Total de productos: {self.cant_productos}\n Sus productos: {self.productos} \n Precio total: {self.total}")
                     else:
                         nueva_cantidad = cant - cantidad
@@ -37,8 +39,10 @@ class Carrito ():
                         self.productos.append((producto, nueva_cantidad))
                         self.cant_productos -= cantidad
                         self.total -= precio_final
-
+                        producto.modif_stock(stock - cant)
+                        
                         return print(f"Cantidad ingresada del '{producto}' fue eliminada correctamente. Total de productos: {self.cant_productos}\n Sus productos: {self.productos} \n Precio total: {self.total}")
+            
             else:
                 encontrado +=0
             
@@ -49,8 +53,9 @@ class Carrito ():
             print("Producto no encontrado")
             return 0
     
-    #def calcularTotal(self): #float
-    #    pass
+    def actualizar_Total(self, nuevo_total): #float
+        self.total = nuevo_total
+        print(f"Su nuevo total con promociones aplicadas es:{self.total}")
     
     def ver_promociones(self, promos, gondolas):
         promociones = promos.mis_promos()
