@@ -8,3 +8,6 @@ class Gondola():
     
     def mis_productos(self):
         return self.list_productos
+    
+    def mi_nom(self):
+        return self.nombre

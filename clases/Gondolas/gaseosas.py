@@ -7,3 +7,6 @@ class GondolaGaseosa():
         
     def mis_productos(self):
         return self.productos
+    
+    def mi_nom(self):
+        return self.nombre

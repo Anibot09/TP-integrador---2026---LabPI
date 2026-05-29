@@ -3,6 +3,11 @@ from clases.pedido import Pedido
 from clases.Gondolas import *
 from clases.errores import no_encontradoError
 
+from clases.Productos.pan import Pan
+from clases.Productos.producto_gral import Producto_gral
+from clases.Productos.liquido import Liquido
+from clases.Productos.carne import Carne
+from clases.Productos.verdura import Verdura
 
 class Inventario():
     def __init__(self, num, dep: Deposito, gond:list):
@@ -10,53 +15,69 @@ class Inventario():
         self.deposito = dep
         self.gondolas = gond
     
-    def ubicarProducto(self, producto)->str: #falta actualizar cantidad, recibe list [producto, cant]
-        codigo = producto.mi_codigo()
-        for gondola in self.gondolas:
-            # Carnicería
-            if isinstance(producto, Carne) and "Carniceria" in gondola.nombre:
-                gondola.mis_productos().append(producto)
-                gondola.cant_productos += 1
-                break
+    def ubicarProducto(self, productos:list)->str: #falta actualizar cantidad, recibe list [producto, cant]
+        for producto in productos:
+            codigo = productos[0].mi_codigo()
+            ubicado = False 
 
-            # Panadería
-            elif isinstance(producto, Pan) and "Panaderia" in gondola.nombre:
-                gondola.mis_productos().append(producto)
-                gondola.cant_productos += 1
-                break
-
-            # Verdulería
-            elif isinstance(producto, Verdura) and "Verduleria" in gondola.nombre:
-                gondola.mis_productos().append(producto)
-                gondola.cant_productos += 1
-                break
-
-            # Gaseosas
-            elif isinstance(producto, Liquido) and "Gaseosas" in gondola.nombre:
-                gondola.mis_productos().append(producto)
-                gondola.cant_productos += 1
-                break
-
-            # Productos grales(Perfumería, Galletitas, Electro, Juguetes)
-            elif isinstance(producto, Producto_gral):
-                if 600 <= codigo <= 699 and "Perfumeria" in gondola.nombre:
-                    gondola.mis_productos().append(producto)
-                    gondola.cant_productos += 1
+            #producto existente
+            for gondola in self.gondolas:
+                #busco si existe en una gondola
+                for prod_existente in gondola.mis_productos():
+                    if prod_existente.mi_codigo() == codigo:
+                        # Actualizar stock si ya existe (guardo ese valor en el atributo stock)
+                        prod_existente.modif_stock(prod_existente.mi_stock() + producto.mi_stock())
+                        print(f"Stock actualizado: {prod_existente.mi_nombre()} tiene {prod_existente.mi_stock()}")
+                        ubicado = True
+                        break
+                if ubicado:
                     break
-                elif 700 <= codigo <= 799 and "Galletitas" in gondola.nombre:
-                    gondola.mis_productos().append(producto)
-                    gondola.cant_productos += 1
-                    break
-                elif 800 <= codigo <= 899 and "Electro" in gondola.nombre:
-                    gondola.mis_productos().append(producto)
-                    gondola.cant_productos += 1
-                    break
-                elif 900 <= codigo <= 999 and "Juguetes" in gondola.nombre:
-                    gondola.mis_productos().append(producto)
-                    gondola.cant_productos += 1
-                    break
+                #si no existe lo ubico segun tipo y gondola
+                if not ubicado:
+                # Carnicería
+                    if isinstance(producto, Carne) and "Carniceria" in gondola.nombre:
+                        gondola.list_productos.append(producto)
+                        gondola.cant_productos += 1
+                        break
 
-        return print("Productos ubicados correctamente.")
+                    # Panadería
+                    elif isinstance(producto, Pan) and "Panaderia" in gondola.nombre:
+                        gondola.list_productos.append(producto)
+                        gondola.cant_productos += 1
+                        break
+
+                    # Verdulería
+                    elif isinstance(producto, Verdura) and "Verduleria" in gondola.nombre:
+                        gondola.list_productos.append(producto)
+                        gondola.cant_productos += 1
+                        break
+
+                    # Gaseosas
+                    elif isinstance(producto, Liquido) and "Gaseosas" in gondola.nombre:
+                        gondola.list_productos.append(producto)
+                        gondola.cant_productos += 1
+                        break
+
+                    # Productos grales(Perfumería, Galletitas, Electro, Juguetes)
+                    elif isinstance(producto, Producto_gral):
+                        if 600 <= codigo <= 699 and "Perfumeria" in gondola.nombre:
+                            gondola.list_productos.append(producto)
+                            gondola.cant_productos += 1
+                            break
+                        elif 700 <= codigo <= 799 and "Galletitas" in gondola.nombre:
+                            gondola.list_productos.append(producto)
+                            gondola.cant_productos += 1
+                            break
+                        elif 800 <= codigo <= 899 and "Electro" in gondola.nombre:
+                            gondola.list_productos.append(producto)
+                            gondola.cant_productos += 1
+                            break
+                        elif 900 <= codigo <= 999 and "Juguetes" in gondola.nombre:
+                            gondola.list_productos.append(producto)
+                            gondola.cant_productos += 1
+                            break
+
+        return "Productos ubicados correctamente."
     
     def chequearDisponibilidad(self, producto):
         try:

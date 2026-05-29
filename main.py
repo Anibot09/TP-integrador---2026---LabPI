@@ -6,6 +6,7 @@ from clases.Productos.pan import Pan
 from clases.Productos.producto_gral import Producto_gral
 from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
+from clases.Productos.verdura import Verdura
 #Gondolas
 from clases.Gondolas.carniceria import Carniceria
 from clases.Gondolas.gaseosas import GondolaGaseosa
@@ -48,7 +49,7 @@ def main():
     perfume1 = Producto_gral(608, "mandarina", "ooo", 7230, 19, 2)
     perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
 
-    Carnes = Carniceria(100, "Carnicería", [])
+    Carnes = Carniceria(100, "Carnicería", [], 0)
     #Panes = Panaderia()
     #Verduras = Verduleria()
     #Bebidas = GondolaGaseosa()
@@ -57,7 +58,7 @@ def main():
     Electrodomesticos = Gondola(800, "Electrodomesticos", [], 4)
     Juguetes = Gondola(900, "Jugueteria", [], 8)
 
-    Negocio = [Perfumeria, Galletitas]
+    Negocio = [Perfumeria, Galletitas, Carnes]
 
     promos = {703:{"producto": "pepitos", "marca":"Mondelez", "promo":"2x1"},
             712:{"producto": "melba", "marca":"Terrabusi", "promo":"2x1"},
@@ -79,6 +80,12 @@ def main():
 
     carrito = Carrito()
     
+    inventario.ubicarProducto([carne_1, 5])
+    for gondola in Negocio:
+        for producto in gondola.mis_productos():
+            print(producto) 
+    """
+    
     op = -1
     while op != 0:
         print("\n--Bienvenido su carrito--")
@@ -94,9 +101,42 @@ def main():
                 raise ValueError
             match op:
                 case 1:
-                    pass
+                    while True:
+                        max_gond = len(Negocio)
+                        print("---Góndolas---")
+                        for i in range(max_gond):
+                            print(f"{i}. {Negocio[i].mi_nom()}")
+                        try:
+                            gond = int(input("\nIngrese el la gondola a la que desea ingresar. (Ingrese un numero de opcion): "))
+                            if gond<0 or gond>=max_gond:
+                                raise ValueError
+                            
+                            gondola_elegida = Negocio[gond]
+
+                            print(f"\nProductos en {gondola_elegida.mi_nom()}:")
+
+                            for producto in gondola_elegida.mis_productos():
+                                print(producto)
+                            
+                            while True:
+                                print("\n1. Volver a las góndolas")
+                                print("2. Volver al menú principal")
+                                opcion = int(input("Seleccione una opción: "))
+
+                                if opcion == 1:
+                                    return False
+                                elif opcion == 2:
+                                    break
+                                else:
+                                    raise ValueError
+
+                            if opcion == 2:
+                                break
+
+                        except ValueError:
+                            print("Debe ingresar un número")              
                 case 2:
-                    pass
+                    carrito.ver_promociones(promociones, Negocio)
                 case 3:
                     while True:
                         prod = str(input("\nIngrese el nombre del producto que desea agregar:")).lower()
@@ -144,9 +184,10 @@ def main():
                 case 5:
                     pass
                 case 0:
+                    print("Su compra fue cancelada. ¡Esperamos que vuelva otro día!")
                     break
         except ValueError:
             print("Ingreso un valor inválido. Por favor, ingrese un número.")
-
+"""
 if __name__ == "__main__":
     main()

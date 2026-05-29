@@ -52,5 +52,16 @@ class Carrito ():
     #def calcularTotal(self): #float
     #    pass
     
+    def ver_promociones(self, promos, gondolas):
+        promociones = promos.mis_promos()
+        for gondola in gondolas:
+            for producto in gondola.mis_productos():
+                if producto.mi_codigo() in promociones:
+                    promo = promociones[producto.mi_codigo()]
+                    print(f"{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
+                else:
+                    print("Actualmente no encontramos singú producto con promoción")
+        
+    
     def mis_productos(self):
         return self.productos
