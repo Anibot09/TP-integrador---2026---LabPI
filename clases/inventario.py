@@ -95,17 +95,17 @@ class Inventario():
             encontrado = 0
             for gondola in self.gondolas:
                     for producto in gondola.mis_productos():
-                        if producto.mi_stock() <= producto.mi_stock_min():
+                        if producto.mi_stock() <= producto.mi_stock_min(): #no diponible, necesario reponer
                             encontrado += 1
                             return 0
                         else:
-                            return 1
+                            return 1 #hay stock
             if encontrado == 0:
                 raise no_encontradoError
         
         except no_encontradoError:
             print("Producto no encontrado")
-            return 2
+            return 2 #no se encontro
     
     def generarPedido(self, producto, cant)->Pedido:
         if self.deposito.reponer_producto(producto, cant) == 0:
@@ -117,12 +117,16 @@ class Inventario():
         if self.chequearDisponibilidad(producto) == 0:
             if self.deposito.reponer_producto(producto, cant)== 0:
                 return False
-                #print("pedido")
             else:
                 productos = self.deposito.reponer_producto(producto, cant)
                 self.ubicarProducto(productos)
                 print("Se pudo reponer correctamente.")
                 return True
+        else:
+            productos = self.deposito.reponer_producto(producto, cant)
+            self.ubicarProducto(productos)
+            print("Se pudo reponer correctamente.")
+            return True
     
             
     

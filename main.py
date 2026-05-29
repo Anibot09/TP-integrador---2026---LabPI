@@ -31,9 +31,9 @@ def main():
     perfume_2 =  Producto_gral(703, "melba", "Terrabusi", 400, 15, 2)
     perfume_3 =  Producto_gral(708, "melba", "Terrabusi", 400, 15, 2)
     #Productos tipo(Prod. gral.): Electrodoméstico
-    electro_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
-    electro_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 15, 2)
-    electro_3 =  Producto_gral(708, "Melba", "Terrabusi", 400, 15, 2)
+    electro_1 =  Producto_gral(712, "microondas", "Phillips", 3000, 5, 1)
+    electro_2 =  Producto_gral(703, "licuadora", "Terrabusi", 24000, 18, 1)
+    electro_3 =  Producto_gral(708, "tostadora", "Terrabusi", 15000, 23, 1)
     #Productos tipo(Prod. gral.): Jueguetes
     juguete_1 =  Producto_gral(712, "Melba", "Terrabusi", 400, 15, 2)
     juguete_2 =  Producto_gral(703, "Melba", "Terrabusi", 400, 29, 2)
@@ -50,9 +50,9 @@ def main():
     perfume2 = Producto_gral(608, "magnolia", "iii", 9000, 2, 2)
 
     Carnes = Carniceria(100, "Carniceria", [], 0)
-    #Panes = Panaderia()
-    #Verduras = Verduleria()
-    #Bebidas = GondolaGaseosa()
+    #Panes = Panaderia(200, "Panaderia", [], 0)
+    #Verduras = Verduleria(300, "Verduleria", [], 0)
+    #Bebidas = GondolaGaseosa(400, "Bebidas", [], 0)
     Perfumeria = Gondola(600, "Perfumeria", [perfume1, perfume2], 2)
     Galletitas = Gondola(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
     Electrodomesticos = Gondola(800, "Electrodomesticos", [], 4)
@@ -78,6 +78,8 @@ def main():
     proveedor = Proveedor("Productos por mayoR S.R.L.", "+54 9 11 3456-0987/prod_mayor455@gmail.com")
     inventario = Inventario(7654, dep, Negocio)
 
+    dep.agregar_producto(carne_1, 5)
+    dep.agregar_producto(galletita_1, 7)
     carrito = Carrito()
     
     
@@ -120,7 +122,7 @@ def main():
                                     opcion = int(input("Seleccione una opción: "))
 
                                     if opcion == 1:
-                                        return False
+                                        break
                                     elif opcion == 2:
                                         break
                                     else:
@@ -134,7 +136,23 @@ def main():
                         except ValueError:
                             print("Debe ingresar un número")              
                 case 2:
-                    carrito.ver_promociones(promociones, Negocio)
+                    while True:
+                        print("\n1. Ver todas las promociones.")
+                        print("2.Buscar promoción por producto")
+                        print("0.Volver al menú")
+                        try:
+                            opcion=int(input("\nIngrese una opción (0 o 1 o 2):"))
+                            if opcion == 1:
+                                carrito.ver_promociones(promociones, Negocio)
+                            elif opcion == 2:
+                                prod = str(input("\nIngrese el nombre del producto:"))
+                                carrito.ver_promociones_producto(promociones, Negocio, prod)
+                            elif opcion == 0:
+                                break
+                            else: 
+                                raise ValueError
+                        except ValueError:
+                            print("Ingrese un numero, por favor.")
                 case 3:
                     while True:
                         prod = str(input("\nIngrese el nombre del producto que desea agregar:")).lower()

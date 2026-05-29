@@ -121,7 +121,7 @@ class Almacen():
                     self.contactar_proveedor(pedido, proveedor, dep)
                     inventario.reponerInternamente(producto, cant)#quizas innecesario/ preguntar el viernes
                 else: 
-                    ("Ya repusimos ingrese su compra de vuelta.")
+                    print("Ya repusimos ingrese su compra de vuelta.")
                 return False        
         except no_encontradoError:
                 print("Producto no encontrado, por favor vuelva ingresarlo")

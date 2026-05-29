@@ -27,7 +27,9 @@ class Deposito():
             else: 
                 if self.stock_reserva[producto] == 0:
                     return 0
-        return f"Quedan {self.stock_reserva[producto]} {self.stock_reserva[producto.mi_nombre()]} /n codigo: {self.stock_reserva[producto.mi_codigo()]}"
+        else: 
+            return 0
+        #return f"Quedan {self.stock_reserva[producto]} {self.stock_reserva[producto.mi_nombre()]} /n codigo: {self.stock_reserva[producto.mi_codigo()]}"
     
 
     def nombre_deposito (self):
