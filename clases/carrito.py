@@ -55,6 +55,9 @@ class Carrito ():
         except no_encontradoError:
             print("Producto no encontrado")
             return 0
+        except vacioError:
+            print("Intento eliminar más articulos de los que tiene. Por favor ingrese otra cantidad.")
+            return 0
     
     def actualizar_Total(self, nuevo_total): #float
         self.total = nuevo_total
@@ -97,7 +100,7 @@ class Carrito ():
                     if producto_nom == producto.mi_nombre():#encuentra el producto con mismo nombre
                         encontrado += 1
                         stock = producto.mi_stock()
-                        print(f"Acotualmente contamos con {stock} articulos de este producto.")
+                        print(f"Actualmente contamos con {stock} articulos de este producto.")
             if encontrado == 0:
                 raise no_encontradoError
         except no_encontradoError:

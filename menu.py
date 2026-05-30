@@ -19,7 +19,7 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
         print("0. Cancelar compra.")
         try:
             op = int(input("Ingrese el numero de la acción que desea realizar: "))
-            if op<0 or op>5:
+            if op<0 or op>6:
                 raise ValueError
             match op:
                 case 1:
@@ -57,7 +57,7 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                                     else:
                                         raise ValueError
                                 except ValueError:
-                                    print("Ingrese 1 o 2")
+                                    print("Ingrese 1 y 3")
                             
                             if opcion == 2:
                                 break
@@ -108,7 +108,7 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                     while True:
                         prod = str(input("\nIngrese el nombre del producto que desea eliminar: "))
                         cant = int(input("\nIngrese la cantidad de artículos que dese eliminar: "))
-                        almacen.monitorear_eliminacion(prod, cant, carrito, inventario, )
+                        almacen.monitorear_eliminacion(prod, cant, carrito)
                         while True:
                             try:
                                 opcion = int(input(
@@ -129,7 +129,12 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                 case 5:
                     caso_menu_5(Negocio, carrito)
                 case 6:
-                    pass
+                    print("\n--- Carrito final ---")
+                    for prod in carrito.mis_productos():
+                        print(prod)
+                    print(f"Total a pagar: {carrito.total}")
+                    print("¡Gracias por su compra!Hasta la próxima :)")
+                    op = 0
                 case 0:
                     print("Su compra fue cancelada. ¡Esperamos que vuelva otro día!")
                     break
