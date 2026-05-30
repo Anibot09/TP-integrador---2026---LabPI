@@ -13,7 +13,11 @@ class Carrito ():
         self.productos.append((producto, cant))
         self.cant_productos += cant
         self.total += precio_final
-        print(f"Producto '{producto}' fue agregado correctamente. Total de productos: {self.cant_productos} \n Sus productos: {self.productos}\n Su total: {self.total}")
+        print(f"Producto '{producto}' fue agregado correctamente. Total de productos: {self.cant_productos}\n Su total: {self.total}")
+        print("Sus productos:")
+        for prod, cant in self.productos:
+            print(f"- {prod} | Cantidad: {cant}")
+
         return True
                         
 
@@ -32,9 +36,12 @@ class Carrito ():
                         self.cant_productos -= cantidad
                         self.total -= precio_final * cant
                         producto.modif_stock(stock - cant)
-                        print(f"Producto '{producto}' fue eliminado correctamente. \n Total de productos: {self.cant_productos}\n Sus productos: ")
-                        for nombre, cant in self.productos:
-                            print(f"-{self.productos} \n Precio total: {self.total}")
+                        print(f"Producto '{producto}' fue eliminado correctamente. \n Total de productos: {self.cant_productos}")
+                        print("Sus productos:")
+                        for prod, cant in self.productos:
+                            print(f"- {prod} | Cantidad: {cant}")
+
+                        print(f"Precio total: {self.total}")
                         return
                     else:
                         nueva_cantidad = cant - cantidad
@@ -44,7 +51,11 @@ class Carrito ():
                         self.total -= precio_final
                         producto.modif_stock(stock - cant)
                         
-                        return print(f"Cantidad ingresada del '{producto}' fue eliminada correctamente. Total de productos: {self.cant_productos}\n Sus productos: {self.productos} \n Precio total: {self.total}")
+                        print(f"Cantidad ingresada del '{producto}' fue eliminada correctamente. Total de productos: {self.cant_productos}\n Precio total: {self.total}")
+                        print("Sus productos:")
+                        for prod, cant in self.productos:
+                            print(f"- {prod} | Cantidad: {cant}")
+                        return
             
             else:
                 encontrado +=0
@@ -109,3 +120,6 @@ class Carrito ():
     
     def mis_productos(self):
         return self.productos
+    
+    def mi_total(self):
+        return self.total

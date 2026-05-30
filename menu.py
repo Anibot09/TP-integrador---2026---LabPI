@@ -15,11 +15,12 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
         print("3. Agregar producto al carrito.")
         print("4. Eliminar producto del carrito.")
         print("5.Ver stock de un producto.")
-        print("6. Ir a pagar y finalizar compra.")
+        print("6. Ver su carrito.")
+        print("7. Ir a pagar y finalizar compra.")
         print("0. Cancelar compra.")
         try:
             op = int(input("Ingrese el numero de la acción que desea realizar: "))
-            if op<0 or op>6:
+            if op<0 or op>7:
                 raise ValueError
             match op:
                 case 1:
@@ -129,6 +130,14 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                 case 5:
                     caso_menu_5(Negocio, carrito)
                 case 6:
+                    print("\n--- Mi Carrito ---")
+                    if carrito.mis_productos() == []:
+                        print("Su carrito se encuentra vacio! Agregue articulos para visualizarlos.")
+                    else:
+                        for producto, cantidad in carrito.mis_productos():
+                            print(f"{producto} | Cantidad: {cantidad}")
+                        print(f"Su total es: {carrito.mi_total()}")
+                case 7:
                     print("\n--- Carrito final ---")
                     for prod in carrito.mis_productos():
                         print(prod)

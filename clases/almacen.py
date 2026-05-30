@@ -51,49 +51,47 @@ class Almacen():
         promociones = self.promociones.mis_promos()
         for producto, cant in carrito.mis_productos(): #recorre mi lista de tuplas (el carrito)
             precio_unitario = producto.mi_precio()  #defino el precio de cada producto
-            #veo si aplica alguna promo
-            if producto.mi_codigo() in promociones: 
-                promo = promociones[producto.mi_codigo()] 
-                #2x1
-                if promo['promo'] == "2x1":
-                    cant_galletitas += cant
-                    if cant_galletitas>=2:
-                        if cant_galletitas % 2 == 0:
-                            precio_final = (cant_galletitas/2)*precio_unitario 
-                        else:
-                            precio_final = ((cant_galletitas//2)+1)*precio_unitario #división de enteros //
-                        precio_galletitas = precio_final
+            codigo = producto.mi_codigo()
+            #2x1
+            if codigo >= 700 and codigo<800:
+                cant_galletitas += cant
+                if cant_galletitas>=2:
+                    if cant_galletitas % 2 == 0:
+                        precio_final = (cant_galletitas/2)*precio_unitario 
                     else:
-                        print("No hay cantidad necesaria para agregar el descuento.")
-                        precio_total  += precio_unitario
-                #30%
-                elif promo["promo"] == "30 descuento(2da/misma marca)":
-                    cant_bebidas += cant
-                    gaseosas = []
-                    cant_por_marcas = {}
-                    gaseosas.append((producto, cant))
-                    for gaseosa, cant in gaseosas:
-                        if gaseosa.mi_marca() not in cant_por_marcas:
-                            cant_por_marcas[gaseosa.mi_marca()] = cant
-                        else: 
-                            cant_por_marcas[gaseosa.mi_marca()] += cant
-                        for marca in cant_por_marcas:
-                            cant = cant_por_marcas[marca]
-                            if cant>=2:
-                                if cant % 2 == 0:
-                                    precio_final = (cant/2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30)))
-                                else:
-                                    sobrantes = cant % 2
-                                    precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio_unitario
-                                precio_bebidas = precio_final
+                        precio_final = ((cant_galletitas//2)+1)*precio_unitario #división de enteros //
+                    precio_galletitas = precio_final
+                else:
+                    print("No hay cantidad necesaria para agregar el descuento.")
+                    precio_total  += precio_unitario
+            #30%
+            elif codigo >= 500 and codigo<600:
+                cant_bebidas += cant
+                gaseosas = []
+                cant_por_marcas = {}
+                gaseosas.append((producto, cant))
+                for gaseosa, cant in gaseosas:
+                    if gaseosa.mi_marca() not in cant_por_marcas:
+                        cant_por_marcas[gaseosa.mi_marca()] = cant
+                    else: 
+                        cant_por_marcas[gaseosa.mi_marca()] += cant
+                    for marca in cant_por_marcas:
+                        cant = cant_por_marcas[marca]
+                        if cant>=2:
+                            if cant % 2 == 0:
+                                precio_final = (cant/2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30)))
                             else:
-                                print("No hay cantidad necesaria para agregar el descuento.")
-                                precio_total  += precio_unitario
+                                sobrantes = cant % 2
+                                precio_final = (cant//2)*(precio_unitario + (precio_unitario-(precio_unitario*0.30))) + sobrantes*precio_unitario
+                            precio_bebidas = precio_final
+                        else:
+                            print("No hay cantidad necesaria para agregar el descuento.")
+                            precio_total  += precio_unitario
                 #50%
-                elif promo["promo"] == "50 descuento":
-                    cant_perfumes += cant
-                    precio_final = precio_unitario*0.50
-                    precio_perfumes += precio_final
+            elif codigo >= 600 and codigo<700:
+                cant_perfumes += cant
+                precio_final = precio_unitario*0.50
+                precio_perfumes += precio_final
             else:
                 #("Producto sin promoción")
                 precio_final = self.determinar_precio(producto, cant)
