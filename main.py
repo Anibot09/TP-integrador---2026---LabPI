@@ -19,7 +19,7 @@ from clases.proveedor import Proveedor
 from clases.carrito import Carrito
 from clases.inventario import Inventario
 import menu
-from negocio import Negocio, promociones, dep
+from catalogo import Negocio, promociones, dep
 
 def main():
 

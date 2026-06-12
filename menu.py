@@ -1,8 +1,31 @@
-def caso_menu_5(Negocio, carrito):
-    prod = input("Ingrese el nombre del producto:")
-    carrito.ver_stock_producto(Negocio, prod)
+def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
+    while True:
+        prod = str(input("\nIngrese el nombre del producto que desea agregar: ")).lower()
+        cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
+        almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
+        while True:
+            try:
+                opcion = int(input(
+                    "\n1. Seguir agregando\n"
+                    "2. Volver al menú\n"
+                    "Seleccione una opción: "))
 
-def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, dep):
+                if opcion == 1 or opcion == 2:
+                    break
+                            
+                print("Ingrese 1 o 2")
+
+            except ValueError:
+                    print("Debe ingresar un número")
+
+            if opcion == 2:
+                     break
+            
+def caso_menu_5(catalogo, carrito):
+    prod = input("Ingrese el nombre del producto:")
+    carrito.ver_stock_producto(catalogo, prod)
+
+def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor, dep):
     op = -1
     while op != 0:
         print("\n☆〜-Bienvenido a SuperMarket IoT-〜☆")
@@ -21,18 +44,18 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
             match op:
                 case 1:
                     while True:
-                        max_gond = len(Negocio)
+                        max_gond = len(catalogo)
                         print("---Góndolas---")
                         for i in range(max_gond):
-                            print(f"{i+1}. {Negocio[i].mi_nom()}")
+                            print(f"{i+1}. {catalogo[i].mi_nom()}")
                         try:
                             gond = int(input("\nIngrese el numero de la gondola a la que desea ingresar o ingrese 0 para volver al menu: "))
-                            if gond<0 or gond>=max_gond:
+                            if gond<0 or gond>max_gond:
                                 raise ValueError
                             elif gond == 0:
                                 break 
 
-                            gondola_elegida = Negocio[gond]
+                            gondola_elegida = catalogo[gond-1]
 
                             print(f"\nProductos en {gondola_elegida.mi_nom()}:")
 
@@ -40,38 +63,45 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                                 print(producto)
                             
                             while True:
-                                print("\n1. Volver a las góndolas.")
-                                print("2. Volver al menú principal.")
-                                print("3. Ver stock de un producto.")
+                                print("\n1. Agregar producto al carrito.")
+                                print("2. Ver stock de un producto.")
+                                print("3. Volver a las góndolas.")
+                                print("4. Volver al menú principal.")
+                               
                                 try:
                                     opcion = int(input("Seleccione una opción: "))
 
                                     if opcion == 1:
-                                        break
+                                        caso_menu_agregar(almacen, carrito,inventario, proveedor,dep)
                                     elif opcion == 2:
+                                        caso_menu_5(catalogo, carrito)
                                         break
                                     elif opcion == 3:
-                                        caso_menu_5(Negocio, carrito)
+                                        break
+                                    elif opcion == 4:
                                         break
                                     else:
                                         raise ValueError
                                 except ValueError:
-                                    print("Ingrese 1 y 3")
+                                    print("Ingrese un numero del 1 al 4")
 
                         except ValueError:
                             print("Debe ingresar un número")              
                 case 2:
                     while True:
                         print("\n1. Ver todas las promociones.")
-                        print("2.Buscar promoción por producto")
-                        print("0.Volver al menú")
+                        print("2. Buscar promoción por producto")
+                        print("3. Agregar producto al carrito.")
+                        print("0. Volver al menú")
                         try: 
                             opcion=int(input("\nIngrese una opción: "))
                             if opcion == 1:
-                                carrito.ver_promociones(promociones, Negocio)
+                                carrito.ver_promociones(promociones, catalogo)
                             elif opcion == 2:
                                 prod = str(input("\nIngrese el nombre del producto: "))
-                                carrito.ver_promociones_producto(promociones, Negocio, prod)
+                                carrito.ver_promociones_producto(promociones, catalogo, prod)
+                            elif opcion == 3:
+                                caso_menu_agregar(almacen, carrito, inventario, proveedor, dep)
                             elif opcion == 0:
                                 break
                             else: 
@@ -79,27 +109,8 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                         except ValueError:
                             print("Ingrese un numero, por favor.")
                 case 3:
-                    while True:
-                        prod = str(input("\nIngrese el nombre del producto que desea agregar: ")).lower()
-                        cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
-                        almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
-                        while True:
-                            try:
-                                opcion = int(input(
-                                    "\n1. Seguir agregando\n"
-                                    "2. Volver al menú\n"
-                                    "Seleccione una opción: "))
-
-                                if opcion == 1 or opcion == 2:
-                                    break
-                            
-                                print("Ingrese 1 o 2")
-
-                            except ValueError:
-                                print("Debe ingresar un número")
-
-                        if opcion == 2:
-                            break
+                    caso_menu_agregar(almacen, carrito,inventario, proveedor,dep)
+                    break
                 case 4:
                     while True:
                         prod = str(input("\nIngrese el nombre del producto que desea eliminar: "))
@@ -123,7 +134,7 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                         if opcion == 2:
                             break
                 case 5:
-                    caso_menu_5(Negocio, carrito)
+                    caso_menu_5(catalogo, carrito)
                 case 6:
                     print("\n--- Mi Carrito ---")
                     if carrito.mis_productos() == []:

@@ -78,24 +78,25 @@ class Carrito ():
         promociones = promos.mis_promos()
         for gondola in gondolas:
             for producto in gondola.mis_productos():
-                if producto.mi_codigo() in promociones:
-                    promo = promociones[producto.mi_codigo()]
-                    print(f"{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
-                else:
-                    return
+                if str(producto.mi_codigo()) in promociones:
+                    promo = promociones[str(producto.mi_codigo())]
+                    print(f"-{promo['producto']} tiene promo {promo['promo']}")
         
     def ver_promociones_producto(self, promos, gondolas, producto_nom):
         encontrado = 0
         promociones = promos.mis_promos()
+        prod = producto_nom.lower().strip()
         try:
             for gondola in gondolas:
                 for producto in gondola.mis_productos():
-                    if producto_nom == producto.mi_nombre():#encuentra el producto con mismo nombre
+                    if prod == producto.mi_nombre():#encuentra el producto con mismo nombre
                         encontrado += 1
                         codigo = producto.mi_codigo()
-                        if codigo in promociones:
-                            promo = promociones[codigo]
-                            print(f"{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
+                        if str(codigo) in promociones:
+                            promo = promociones[str(codigo)]
+                            print(f"-{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
+                        else:
+                            print("Ese producto no se encuentra con promocion") 
             if encontrado == 0:
                 raise no_encontradoError
         except no_encontradoError:
