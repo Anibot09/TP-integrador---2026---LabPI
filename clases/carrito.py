@@ -82,7 +82,7 @@ class Carrito ():
                     promo = promociones[producto.mi_codigo()]
                     print(f"{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
                 else:
-                    print("Actualmente no encontramos ningún producto con promoción")
+                    return
         
     def ver_promociones_producto(self, promos, gondolas, producto_nom):
         encontrado = 0
@@ -96,8 +96,6 @@ class Carrito ():
                         if codigo in promociones:
                             promo = promociones[codigo]
                             print(f"{promo['producto']} tiene promo {promo['promo']} en marca {promo['marca']}")
-                        else:
-                            print("Actualmente ese producto no cuenta con ninguna promoción.")
             if encontrado == 0:
                 raise no_encontradoError
         except no_encontradoError:

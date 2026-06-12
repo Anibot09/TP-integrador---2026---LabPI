@@ -48,6 +48,8 @@ class Almacen():
         cant_galletitas = 0
         cant_bebidas = 0
         cant_perfumes = 0 
+        gaseosas = []
+        cant_por_marcas = {}
         promociones = self.promociones.mis_promos()
         for producto, cant in carrito.mis_productos(): #recorre mi lista de tuplas (el carrito)
             precio_unitario = producto.mi_precio()  #defino el precio de cada producto
@@ -67,8 +69,6 @@ class Almacen():
             #30%
             elif codigo >= 500 and codigo<600:
                 cant_bebidas += cant
-                gaseosas = []
-                cant_por_marcas = {}
                 gaseosas.append((producto, cant))
                 for gaseosa, cant in gaseosas:
                     if gaseosa.mi_marca() not in cant_por_marcas:
@@ -125,7 +125,7 @@ class Almacen():
                         if cant <= producto.mi_stock(): # chequea que haya stock suficiente
                             precio_base = self.determinar_precio(producto, cant)
                             carrito.agregarProducto(producto, cant, precio_base)
-                            self.actualizar_stock(producto, cant, "sumar")
+                            self.actualizar_stock(producto, cant, "restar")
                             total_promo = self.calcular_promociones(carrito)
                             carrito.actualizar_Total(total_promo)
                             agregado +=1

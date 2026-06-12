@@ -1,7 +1,3 @@
-
-def caso_menu_3(almacen,carrito, inventario, proveedor, dep):
-    pass
-                        
 def caso_menu_5(Negocio, carrito):
     prod = input("Ingrese el nombre del producto:")
     carrito.ver_stock_producto(Negocio, prod)
@@ -14,7 +10,7 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
         print("2. Ver promociones de la semana.")
         print("3. Agregar producto al carrito.")
         print("4. Eliminar producto del carrito.")
-        print("5.Ver stock de un producto.")
+        print("5. Ver stock de un producto.")
         print("6. Ver su carrito.")
         print("7. Ir a pagar y finalizar compra.")
         print("0. Cancelar compra.")
@@ -28,12 +24,14 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                         max_gond = len(Negocio)
                         print("---Góndolas---")
                         for i in range(max_gond):
-                            print(f"{i}. {Negocio[i].mi_nom()}")
+                            print(f"{i+1}. {Negocio[i].mi_nom()}")
                         try:
-                            gond = int(input("\nIngrese el numero de la gondola a la que desea ingresar: "))
+                            gond = int(input("\nIngrese el numero de la gondola a la que desea ingresar o ingrese 0 para volver al menu: "))
                             if gond<0 or gond>=max_gond:
                                 raise ValueError
-                            
+                            elif gond == 0:
+                                break 
+
                             gondola_elegida = Negocio[gond]
 
                             print(f"\nProductos en {gondola_elegida.mi_nom()}:")
@@ -59,9 +57,6 @@ def mostrar_menu(Negocio, carrito, inventario, promociones, almacen, proveedor, 
                                         raise ValueError
                                 except ValueError:
                                     print("Ingrese 1 y 3")
-                            
-                            if opcion == 2:
-                                break
 
                         except ValueError:
                             print("Debe ingresar un número")              
