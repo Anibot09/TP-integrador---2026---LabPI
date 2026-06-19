@@ -2,7 +2,11 @@ def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
     while True:
         prod = str(input("\nIngrese el nombre del producto que desea agregar: ")).lower()
         cant = int(input("\nIngrese la cantidad de artículos que dese adquirir: "))
-        almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
+        resultado = almacen.monitorear_compra(prod, cant, carrito, inventario, proveedor, dep)
+        if resultado:
+            print("Producto agregado correctamente.")
+        else:
+            print("No se pudo agregar el producto.")
         while True:
             try:
                 opcion = int(input(
@@ -21,7 +25,7 @@ def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
             if opcion == 2:
                      break
             
-def caso_menu_5(catalogo, carrito):
+def caso_menu_ver_stock(catalogo, carrito):
     prod = input("Ingrese el nombre del producto:")
     carrito.ver_stock_producto(catalogo, prod)
 
@@ -74,7 +78,7 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                                     if opcion == 1:
                                         caso_menu_agregar(almacen, carrito,inventario, proveedor,dep)
                                     elif opcion == 2:
-                                        caso_menu_5(catalogo, carrito)
+                                        caso_menu_ver_stock(catalogo, carrito)
                                         break
                                     elif opcion == 3:
                                         break
@@ -134,7 +138,7 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                         if opcion == 2:
                             break
                 case 5:
-                    caso_menu_5(catalogo, carrito)
+                    caso_menu_ver_stock(catalogo, carrito)
                 case 6:
                     print("\n--- Mi Carrito ---")
                     if carrito.mis_productos() == []:

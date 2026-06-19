@@ -1,9 +1,13 @@
 """TP Integrador - Lab. PI"""
+
 from clases.almacen import Almacen
 from clases.deposito import Deposito
 #Productos
 from clases.Productos.pan import Pan
-from clases.Productos.producto_gral import Producto_gral
+from clases.Productos.electro import Electro
+from clases.Productos.perfume import Perfume
+from clases.Productos.galletitas import Galletitas
+from clases.Productos.juguete import Juguete
 from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
 from clases.Productos.verdura import Verdura
@@ -13,6 +17,10 @@ from clases.Gondolas.gaseosas import GondolaGaseosa
 from clases.Gondolas.gondola import Gondola
 from clases.Gondolas.panaderia import Panaderia
 from clases.Gondolas.verduleria import Verduleria
+from clases.Gondolas.electro import Electro
+from clases.Gondolas.galletita import Galletita
+from clases.Gondolas.perfume import Perfume
+from clases.Gondolas.juguete import Juguete
 
 from clases.promociones import Promociones
 from clases.proveedor import Proveedor

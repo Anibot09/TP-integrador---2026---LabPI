@@ -1,10 +1,10 @@
 from clases.Productos.producto import Producto
 
-class Verdura(Producto):
-    def __init__(self, cod, nom, marca, price, st, st_min, peso):
-        super().__init__(cod, nom, marca, price, st, st_min)
-        self.peso = peso
-    
+class Juguete(Producto):
+    def __init__(self, cod, nom, marca, precio, st, st_min, edad_recomendada):
+        super().__init__(cod, nom, marca, precio, st, st_min,edad_recomendada)
+        self.edad_recomendada = edad_recomendada
+
     def mi_precio(self)-> float:
         return self.precio
     
@@ -30,8 +30,8 @@ class Verdura(Producto):
         self.stock = nuevo_stock
         return
     
-    def calcular_precio(self, cant):
-        return (self.peso * self.precio) * cant
-    
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"
+    
+    def calcular_precio(self, cant):
+        return self.precio * cant

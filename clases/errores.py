@@ -3,3 +3,6 @@ class vacioError(Exception):
 
 class no_encontradoError(Exception):
     pass
+
+class stockinsuficienteError(Exception):
+    pass

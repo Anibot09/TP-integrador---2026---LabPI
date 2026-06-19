@@ -34,5 +34,8 @@ class Pan(Producto):
         self.stock = nuevo_stock
         return
     
+    def calcular_precio(self, cant):
+        return (self.precio * self.bolsones) * cant
+    
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

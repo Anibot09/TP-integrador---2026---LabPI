@@ -4,7 +4,10 @@ from clases.Gondolas import *
 from clases.errores import no_encontradoError
 
 from clases.Productos.pan import Pan
-from clases.Productos.producto_gral import Producto_gral
+from clases.Productos.perfume import Perfume
+from clases.Productos.galletita import Galletita
+from clases.Productos.electro import Electro
+from clases.Productos.juguete import Juguete
 from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
 from clases.Productos.verdura import Verdura
@@ -15,6 +18,7 @@ class Inventario():
         self.deposito = dep
         self.gondolas = gond
     
+
     def ubicarProducto(self, productos:list)->str: #falta actualizar cantidad, recibe list [producto, cant]
             producto = productos[0]
             cantidad = productos[1]
@@ -33,7 +37,8 @@ class Inventario():
                         break
                 if ubicado:
                     break
-                #si no existe lo ubico segun tipo y gondola
+
+            #si no existe lo ubico segun tipo y gondola
             if not ubicado:
                 producto.modif_stock(cantidad)
                 for gondola in self.gondolas:            
@@ -65,31 +70,35 @@ class Inventario():
                         ubicado = True
                         break
 
-                    # Productos grales(Perfumería, Galletitas, Electro, Juguetes)
-                    elif isinstance(producto, Producto_gral):
-                        if 600 <= codigo <= 699 and "Perfumeria" in gondola.mi_nom():
-                            gondola.mis_productos().append(producto)
-                            gondola.actualizar_cantidad(cantidad)
-                            ubicado = True
-                            break
-                        elif 700 <= codigo <= 799 and "Galletitas" in gondola.mi_nom():
-                            gondola.mis_productos().append(producto)
-                            gondola.actualizar_cantidad(cantidad)
-                            ubicado = True
-                            break
-                        elif 800 <= codigo <= 899 and "Electro" in gondola.mi_nom():
-                            gondola.mis_productos().append(producto)
-                            gondola.actualizar_cantidad(cantidad)
-                            ubicado = True
-                            break
-                        elif 900 <= codigo <= 999 and "Juguetes" in gondola.mi_nom():
-                            gondola.mis_productos().append(producto)
-                            gondola.actualizar_cantidad(cantidad)
-                            ubicado = True
-                            break
+                    # ex productos grales(Perfumería, Galletitas, Electro, Juguetes)
+                     
+                    elif isinstance(producto, Perfume) and "Perfumeria" in gondola.mi_nom():
+                        gondola.mis_productos().append(producto)
+                        gondola.actualizar_cantidad(cantidad)
+                        ubicado = True
+                        break
+
+                    elif isinstance(producto, Galletita) and "Galletitas" in gondola.mi_nom():
+                        gondola.mis_productos().append(producto)
+                        gondola.actualizar_cantidad(cantidad)
+                        ubicado = True
+                        break
+
+                    elif isinstance(producto, Electro) and "Electro" in gondola.mi_nom():
+                        gondola.mis_productos().append(producto)
+                        gondola.actualizar_cantidad(cantidad)
+                        ubicado = True
+                        break
+
+                    elif isinstance(producto, Juguete) and "Juguetes" in gondola.mi_nom():
+                        gondola.mis_productos().append(producto)
+                        gondola.actualizar_cantidad(cantidad)
+                        ubicado = True
+                        break
 
             return "Productos ubicados correctamente."
     
+
     def chequearDisponibilidad(self, producto, cant):
         try:
             encontrado = 0
@@ -109,10 +118,12 @@ class Inventario():
             print("Producto no encontrado")
             return 2 #no se encontro
     
+
     def generarPedido(self, producto, cant)->Pedido:
         if self.deposito.reponer_producto(producto, cant) == 0:
             pedido = Pedido(producto, cant)
             return pedido
+    
     
     def reponerInternamente(self, producto, cant):
         productos = []

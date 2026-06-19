@@ -33,3 +33,5 @@ class Liquido(Producto):
     def mi_litro(self):
         return self.cant_litros
     
+    def calcular_precio(self, cant):
+        return self.precio * cant

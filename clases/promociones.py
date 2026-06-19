@@ -10,7 +10,7 @@ class Promociones:
             "marca": marca,
             "promo": tipo
         }   
-
+        
     def mis_productos_promos(self): #devuelve que productos tienen promociones
         resultado = []
 

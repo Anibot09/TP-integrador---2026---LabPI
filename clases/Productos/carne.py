@@ -30,5 +30,8 @@ class Carne(Producto):
         self.stock = nuevo_stock
         return
     
+    def calcular_precio(self, cant):
+        return (self.peso * self.precio) * cant
+
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"
