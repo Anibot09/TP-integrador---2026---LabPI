@@ -13,13 +13,12 @@ from clases.Productos.carne import Carne
 from clases.Productos.verdura import Verdura
 #Gondolas
 from clases.Gondolas.carniceria import Carniceria
-from clases.Gondolas.gaseosas import GondolaGaseosa
-from clases.Gondolas.gondola import Gondola
+from clases.Gondolas.gaseosa import GondolaGaseosa
 from clases.Gondolas.panaderia import Panaderia
 from clases.Gondolas.verduleria import Verduleria
 from clases.Gondolas.electro import Electro
 from clases.Gondolas.galletita import Galletita
-from clases.Gondolas.perfume import Perfume
+from clases.Gondolas.perfumeria import Perfume
 from clases.Gondolas.juguete import Juguete
 
 from clases.promociones import Promociones

@@ -1,12 +1,19 @@
+#Productos
 from clases.Productos.pan import Pan
-from clases.Productos.producto_gral import Producto_gral
+from clases.Productos.perfume import Perfume
+from clases.Productos.galletitas import Galletitas
+from clases.Productos.electro import Electro
+from clases.Productos.juguete import Juguete
 from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
 from clases.Productos.verdura import Verdura
 #Gondolas
 from clases.Gondolas.carniceria import Carniceria
-from clases.Gondolas.gaseosas import GondolaGaseosa
-from clases.Gondolas.gondola import Gondola
+from clases.Gondolas.gaseosa import GondolaGaseosa
+from clases.Gondolas.perfumeria import Perfume
+from clases.Gondolas.galletita import Galletita
+from clases.Gondolas.electro import Electro
+from clases.Gondolas.juguete import Juguete
 from clases.Gondolas.panaderia import Panaderia
 from clases.Gondolas.verduleria import Verduleria
 
@@ -15,22 +22,22 @@ from clases.deposito import Deposito
 
 
 
-#Productos tipo(Prod. gral.): Galletitas
-galletita_1 =  Producto_gral(712, "melba", "terrabusi", 400, 15, 2)
-galletita_2 =  Producto_gral(703, "pepitos", "mondelez", 320, 76, 2)
-galletita_3 =  Producto_gral(708, "pepas", "terepin", 245, 23, 2)
-#Productos tipo(Prod. gral.): Perfumes
-perfume_1 =  Producto_gral(622, "crema", "avon", 3500, 15, 3)
-perfume_2 =  Producto_gral(634, "suavizante lavanda", "vivere", 6300, 11, 2)
-perfume_3 =  Producto_gral(678, "jabon liquido", "dove", 8900, 23, 2)
-#Productos tipo(Prod. gral.): Electrodoméstico
-electro_1 =  Producto_gral(823, "microondas", "phillips", 45000, 5, 1)
-electro_2 =  Producto_gral(884, "licuadora", "oster", 24000, 18, 1)
-electro_3 =  Producto_gral(811, "tostadora", "atma", 15000, 23, 1)
-#Productos tipo(Prod. gral.): Juguetes
-juguete_1 =  Producto_gral(931, "auto control remoto", "hot wheels", 9000, 15, 2)
-juguete_2 =  Producto_gral(983, "monopoly", "hasbro", 16700, 29, 2)
-juguete_3 =  Producto_gral(901, "osito de peluche", "ty", 14000, 7, 2)
+#Productos tipo(ex p gral): Galletitas
+galletita_1 =  Galletitas(712, "melba", "terrabusi", 400, 15, 2)
+galletita_2 =  Galletitas(703, "pepitos", "mondelez", 320, 76, 2)
+galletita_3 =  Galletitas(708, "pepas", "terepin", 245, 23, 2)
+#Productos tipo(ex p gral): Perfumes
+perfume_1 =  Perfume(622, "crema", "avon", 3500, 15, 3, 150)
+perfume_2 =  Perfume(634, "suavizante lavanda", "vivere", 6300, 11, 2, 500)
+perfume_3 =  Perfume(678, "jabon liquido", "dove", 8900, 23, 2,250)
+#Productos tipo(ex p gral): Electrodoméstico
+electro_1 =  Electro(823, "microondas", "phillips", 45000, 5, 1, 12)
+electro_2 =  Electro(884, "licuadora", "oster", 24000, 18, 1, 12)
+electro_3 =  Electro(811, "tostadora", "atma", 15000, 23, 1, 6)
+#Productos tipo(ex p gral.): Juguetes
+juguete_1 =  Juguete(931, "auto control remoto", "hot wheels", 9000, 15, 2)
+juguete_2 =  Juguete(983, "monopoly", "hasbro", 16700, 29, 2)
+juguete_3 =  Juguete(901, "osito de peluche", "ty", 14000, 7, 2)
 #Productos tipo(Líquidos): Gaseosas
 bebida_1 =  Liquido(504, "sprite", "coca-cola Company", 250, 13, 1, 500)
 bebida_2 =  Liquido(525, "agua con gas", "villavicencio", 250, 13, 1, 500)
@@ -53,10 +60,10 @@ Carnes = Carniceria(100, "Carniceria", [carne_1, carne_2, carne_3], 37)
 Panes = Panaderia(200, "Panaderia", [pan_1, pan_2, pan_3], 65)
 Verduras = Verduleria(300, "Verduleria", [verdura_1, verdura_2], 35)
 Bebidas = GondolaGaseosa(400, "Bebidas", [bebida_1, bebida_2, bebida_3, bebida_4], 56)
-Perfumeria = Gondola(600, "Perfumeria", [perfume_1, perfume_2, perfume_3], 49)
-Galletitas = Gondola(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
-Electrodomesticos = Gondola(800, "Electrodomesticos", [electro_1, electro_2, electro_3], 46)
-Juguetes = Gondola(900, "Jugueteria", [juguete_1, juguete_2, juguete_3], 51)
+Perfumeria = Perfume(600, "Perfumeria", [perfume_1, perfume_2, perfume_3], 49)
+Galles = Galletita(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
+Electrodomesticos = Electro(800, "Electrodomesticos", [electro_1, electro_2, electro_3], 46)
+Juguetes = Juguete(900, "Jugueteria", [juguete_1, juguete_2, juguete_3], 51)
 
 Negocio = [Carnes, Panes, Verduras, Bebidas, Perfumeria, Galletitas, Electrodomesticos, Juguetes]
 

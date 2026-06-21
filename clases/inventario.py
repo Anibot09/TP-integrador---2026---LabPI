@@ -5,7 +5,7 @@ from clases.errores import no_encontradoError
 
 from clases.Productos.pan import Pan
 from clases.Productos.perfume import Perfume
-from clases.Productos.galletita import Galletita
+from clases.Productos.galletitas import Galletitas
 from clases.Productos.electro import Electro
 from clases.Productos.juguete import Juguete
 from clases.Productos.liquido import Liquido
@@ -64,7 +64,7 @@ class Inventario():
                         break
 
                     # Gaseosas
-                    elif isinstance(producto, Liquido) and "Gaseosas" in gondola.mi_nom():
+                    elif isinstance(producto, Liquido) and "Gaseosa" in gondola.mi_nom():
                         gondola.mis_productos().append(producto)
                         gondola.actualizar_cantidad(cantidad)
                         ubicado = True
@@ -78,7 +78,7 @@ class Inventario():
                         ubicado = True
                         break
 
-                    elif isinstance(producto, Galletita) and "Galletitas" in gondola.mi_nom():
+                    elif isinstance(producto, Galletitas) and "Galletitas" in gondola.mi_nom():
                         gondola.mis_productos().append(producto)
                         gondola.actualizar_cantidad(cantidad)
                         ubicado = True

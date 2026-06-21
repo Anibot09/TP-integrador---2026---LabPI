@@ -1,18 +1,15 @@
 from clases.Productos.producto import Producto
 
-class Juguete(Producto):
-    def __init__(self, cod, nom, marca, precio, st, st_min, edad_recomendada):
-        super().__init__(cod, nom, marca, precio, st, st_min,edad_recomendada)
-        self.edad_recomendada = edad_recomendada
+class Perfume(Producto):
+    def __init__(self, codigo, nombre, marca, precio, stock, st_min, ml):
+        super().__init__(codigo, nombre, marca, precio, stock, st_min)
+        self.volumen = ml
 
     def mi_precio(self)-> float:
         return self.precio
     
     def mi_codigo(self)-> int:
         return self.codigoBarra
-    
-    def mi_peso(self)-> int:
-        return self.peso
     
     def mi_nombre(self)-> str:
         return self.nombre
@@ -30,8 +27,8 @@ class Juguete(Producto):
         self.stock = nuevo_stock
         return
     
-    def __str__(self):
-        return f"{self.nombre} - {self.marca} - ${self.precio}"
-    
     def calcular_precio(self, cant):
         return self.precio * cant
+    
+    def __str__(self):
+        return f"{self.nombre} - {self.marca} - ${self.precio}"
