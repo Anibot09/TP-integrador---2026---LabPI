@@ -1,7 +1,7 @@
 
 from clases.Productos.perfume import Perfume
 
-class Perfume():
+class Perfumeria():
     def __init__(self, cod, nom, perfumes:list[Perfume], cant_p):
         self.codigo = cod
         self.nombre = nom
@@ -15,7 +15,7 @@ class Perfume():
         return self.nombre
     
     def mi_cantidad(self):
-        return self.cant_productos
+        return self.cant_p
     
     def actualizar_cantidad(self, nueva_cantidad):
         self.cant_p += nueva_cantidad

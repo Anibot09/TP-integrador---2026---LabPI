@@ -10,10 +10,10 @@ from clases.Productos.verdura import Verdura
 #Gondolas
 from clases.Gondolas.carniceria import Carniceria
 from clases.Gondolas.gaseosa import GondolaGaseosa
-from clases.Gondolas.perfumeria import Perfume
-from clases.Gondolas.galletita import Galletita
-from clases.Gondolas.electro import Electro
-from clases.Gondolas.juguete import Juguete
+from clases.Gondolas.perfumeria import Perfumeria
+from clases.Gondolas.galletita import GondolaGalletitas
+from clases.Gondolas.electrodomesticos import Electrodomestiscos
+from clases.Gondolas.juguete import Jugueteria
 from clases.Gondolas.panaderia import Panaderia
 from clases.Gondolas.verduleria import Verduleria
 
@@ -60,12 +60,12 @@ Carnes = Carniceria(100, "Carniceria", [carne_1, carne_2, carne_3], 37)
 Panes = Panaderia(200, "Panaderia", [pan_1, pan_2, pan_3], 65)
 Verduras = Verduleria(300, "Verduleria", [verdura_1, verdura_2], 35)
 Bebidas = GondolaGaseosa(400, "Bebidas", [bebida_1, bebida_2, bebida_3, bebida_4], 56)
-Perfumeria = Perfume(600, "Perfumeria", [perfume_1, perfume_2, perfume_3], 49)
-Galles = Galletita(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
-Electrodomesticos = Electro(800, "Electrodomesticos", [electro_1, electro_2, electro_3], 46)
-Juguetes = Juguete(900, "Jugueteria", [juguete_1, juguete_2, juguete_3], 51)
+Perfumes = Perfumeria(600, "Perfumeria", [perfume_1, perfume_2, perfume_3], 49)
+Galles = GondolaGalletitas(700, "Galletas", [galletita_1, galletita_2, galletita_3], 51)
+Electros = Electrodomestiscos(800, "Electrodomesticos", [electro_1, electro_2, electro_3], 46)
+Juguetes = Jugueteria(900, "Jugueteria", [juguete_1, juguete_2, juguete_3], 51)
 
-Negocio = [Carnes, Panes, Verduras, Bebidas, Perfumeria, Galletitas, Electrodomesticos, Juguetes]
+Negocio = [Carnes, Panes, Verduras, Bebidas, Perfumes, Galles, Electros, Juguetes]
 
 # promos = {703:{"producto": "pepitos", "marca":"Mondelez", "promo":"2x1"},
 #            712:{"producto": "melba", "marca":"Terrabusi", "promo":"2x1"},

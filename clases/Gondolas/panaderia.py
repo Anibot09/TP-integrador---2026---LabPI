@@ -14,7 +14,7 @@ class Panaderia():
         return self.nombre
     
     def mi_cantidad(self):
-        return self.cant_productos
+        return self.cant_p
     
     def actualizar_cantidad(self, nueva_cantidad):
         self.cant_p += nueva_cantidad

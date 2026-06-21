@@ -1,6 +1,6 @@
 from clases.Productos.galletitas import Galletitas
 
-class Galletita():
+class GondolaGalletitas():
     def __init__(self, cod, nom, galletitas:list[Galletitas], cant_p):
         self.codigo = cod
         self.nombre = nom
@@ -14,7 +14,7 @@ class Galletita():
         return self.nombre
     
     def mi_cantidad(self):
-        return self.cant_productos
+        return self.cant_p
     
     def actualizar_cantidad(self, nueva_cantidad):
         self.cant_p += nueva_cantidad
