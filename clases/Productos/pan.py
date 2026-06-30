@@ -1,8 +1,8 @@
 from clases.Productos.producto import Producto
 
 class Pan(Producto):
-    def __init__(self, cod, nom, marca, price, st, st_min, peso, bolsones):
-        super().__init__(cod, nom, marca, price, st, st_min)
+    def __init__(self, cod, nom, marca, price, st, st_min, tipo, peso, bolsones):
+        super().__init__(cod, nom, marca, price, st, st_min, tipo)
         self.peso = peso
         self.cant_bolsones = bolsones
         
@@ -29,6 +29,9 @@ class Pan(Producto):
     
     def mi_stock_min(self):
         return self.stock_min
+    
+    def mi_tipo(self):
+        return self.tipo
     
     def modif_stock(self, nuevo_stock):
         self.stock = nuevo_stock

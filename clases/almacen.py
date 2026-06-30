@@ -42,7 +42,7 @@ class Almacen():
             precio_unitario = producto.mi_precio()  #defino el precio de cada producto
             tipo = producto.mi_tipo().lower().strip()
             marca = producto.mi_marca()
-            codigo = producto.mi_codigo()
+            #codigo = producto.mi_codigo()
 
             #-----2x1 en galles
             if tipo == "galletita":
@@ -99,7 +99,7 @@ class Almacen():
                             #precio_total  += precio_unitario
                 
                 #-------50% en perfume
-            elif tipo == "perfume":
+            elif tipo == "perfumeria":
                 cant_perfumes += cant
                 precio_final = precio_unitario * 0.50 * cant
                 precio_perfumes += precio_final

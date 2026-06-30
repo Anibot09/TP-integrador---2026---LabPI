@@ -14,16 +14,20 @@ def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
                     "2. Volver al menú\n"
                     "Seleccione una opción: "))
 
-                if opcion == 1 or opcion == 2:
+                if opcion == 1:
+                    break
+
+                elif opcion == 2:
                     break
                             
-                print("Ingrese 1 o 2")
+                else:
+                    print("Ingrese 1 o 2")
 
             except ValueError:
                     print("Debe ingresar un número")
-
-            if opcion == 2:
-                     break
+        if opcion == 2:
+                return
+    
             
 def caso_menu_ver_stock(catalogo, carrito):
     prod = input("Ingrese el nombre del producto:")
@@ -114,7 +118,6 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                             print("Ingrese un numero, por favor.")
                 case 3:
                     caso_menu_agregar(almacen, carrito,inventario, proveedor,dep)
-                    break
                 case 4:
                     while True:
                         prod = str(input("\nIngrese el nombre del producto que desea eliminar: "))

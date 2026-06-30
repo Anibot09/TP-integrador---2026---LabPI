@@ -1,10 +1,10 @@
 from clases.Productos.producto import Producto
 
 class Verdura(Producto):
-    def __init__(self, cod, nom, marca, price, st, st_min, peso):
-        super().__init__(cod, nom, marca, price, st, st_min)
-        self.peso = peso
-    
+    def __init__(self, cod, nom, marca, price, st, st_min, tipo, peso):
+        super().__init__(cod, nom, marca, price, st, st_min, tipo)
+        self.peso = peso    
+
     def mi_precio(self)-> float:
         return self.precio
     
@@ -19,12 +19,15 @@ class Verdura(Producto):
     
     def mi_marca(self)-> str:
         return self.marca
-    
+    # agrefar flechita int str
     def mi_stock(self):
         return self.stock
     
     def mi_stock_min(self):
         return self.stock_min
+    
+    def mi_tipo(self):
+        return self.tipo
     
     def modif_stock(self, nuevo_stock):
         self.stock = nuevo_stock
@@ -32,6 +35,7 @@ class Verdura(Producto):
     
     def calcular_precio(self, cant):
         return (self.peso * self.precio) * cant
+        
     
     def __str__(self):
         return f"{self.nombre} - {self.marca} - ${self.precio}"

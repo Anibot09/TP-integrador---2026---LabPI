@@ -11,12 +11,23 @@ class Carrito ():
 
      #devuelve bool, imprime si se agrego bien, el producto agregado y la cantidad en el carrito
     def agregarProducto(self, producto, cant:int, precio_final):
-        #guarda tuplas
-        self.productos.append((producto, cant))
-        #suma la cantidad al contador (podemos hacer un contador por producto)
-        self.cant_productos += cant 
-        #suma el precio final al total
-        self.total += precio_final
+        # Buscar si el producto ya existe en el carrito
+        encontrado = False
+        for i, (prod, cantidad) in enumerate(self.productos):
+            if prod == producto:  # si coincide el nombre/objeto
+                # actualizar cantidad
+                nueva_cant = cantidad + cant
+                self.productos[i] = (prod, nueva_cant)
+                encontrado = True
+                break
+         # Si no estaba en el carrito, lo agregamos como nuevo
+        if not encontrado:
+            #guarda tuplas
+            self.productos.append((producto, cant))
+            #suma la cantidad al contador (podemos hacer un contador por producto)
+            self.cant_productos += cant 
+            #suma el precio final al total
+            self.total += precio_final
 
         print(f"Producto '{producto}' fue agregado correctamente. Total de productos: {self.cant_productos}\n Su total: {self.total}")
         

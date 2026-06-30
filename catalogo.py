@@ -23,37 +23,37 @@ from clases.deposito import Deposito
 
 
 #Productos tipo(ex p gral): Galletitas
-galletita_1 =  Galletitas(712, "melba", "terrabusi", 400, 15, 2)
-galletita_2 =  Galletitas(703, "pepitos", "mondelez", 320, 76, 2)
-galletita_3 =  Galletitas(708, "pepas", "terepin", 245, 23, 2)
+galletita_1 =  Galletitas(712, "melba", "terrabusi", 400, 15, 2, "galletita")
+galletita_2 =  Galletitas(703, "pepitos", "mondelez", 320, 76, 2, "galletita")
+galletita_3 =  Galletitas(708, "pepas", "terepin", 245, 23, 2, "galletita")
 #Productos tipo(ex p gral): Perfumes
-perfume_1 =  Perfume(622, "crema", "avon", 3500, 15, 3, 150)
-perfume_2 =  Perfume(634, "suavizante lavanda", "vivere", 6300, 11, 2, 500)
-perfume_3 =  Perfume(678, "jabon liquido", "dove", 8900, 23, 2,250)
+perfume_1 =  Perfume(622, "crema", "avon", 3500, 15, 3, 150, "perfumeria")
+perfume_2 =  Perfume(634, "suavizante lavanda", "vivere", 6300, 11, 2, 500, "perfumeria")
+perfume_3 =  Perfume(678, "jabon liquido", "dove", 8900, 23, 2, 250, "perfumeria")
 #Productos tipo(ex p gral): Electrodoméstico
-electro_1 =  Electro(823, "microondas", "phillips", 45000, 5, 1, 12)
-electro_2 =  Electro(884, "licuadora", "oster", 24000, 18, 1, 12)
-electro_3 =  Electro(811, "tostadora", "atma", 15000, 23, 1, 6)
+electro_1 =  Electro(823, "microondas", "phillips", 45000, 5, 1, 12, "electro")
+electro_2 =  Electro(884, "licuadora", "oster", 24000, 18, 1, 12, "electro")
+electro_3 =  Electro(811, "tostadora", "atma", 15000, 23, 1, 6, "electro")
 #Productos tipo(ex p gral.): Juguetes
-juguete_1 =  Juguete(931, "auto control remoto", "hot wheels", 9000, 15, 2)
-juguete_2 =  Juguete(983, "monopoly", "hasbro", 16700, 29, 2)
-juguete_3 =  Juguete(901, "osito de peluche", "ty", 14000, 7, 2)
+juguete_1 =  Juguete(931, "auto control remoto", "hot wheels", 9000, 15, 2, "juguete")
+juguete_2 =  Juguete(983, "monopoly", "hasbro", 16700, 29, 2, "juguete")
+juguete_3 =  Juguete(901, "osito de peluche", "ty", 14000, 7, 2, "juguete")
 #Productos tipo(Líquidos): Gaseosas
-bebida_1 =  Liquido(504, "sprite", "coca-cola Company", 250, 13, 1, 500)
-bebida_2 =  Liquido(525, "agua con gas", "villavicencio", 250, 13, 1, 500)
-bebida_3 =  Liquido(513, "jugo de naranja", "citric", 250, 13, 1, 500)
-bebida_4 =  Liquido(510, "coca-cola", "Coca-Cola Company", 300, 17, 1, 250)
+bebida_1 =  Liquido(504, "sprite", "coca-cola Company", 250, 13, 1, 500, "bebida")
+bebida_2 =  Liquido(525, "agua con gas", "villavicencio", 250, 13, 1, 500, "bebida")
+bebida_3 =  Liquido(513, "jugo de naranja", "citric", 250, 13, 1, 500, "bebida")
+bebida_4 =  Liquido(510, "coca cola", "Coca-Cola Company", 300, 17, 1, 250, "bebida")
 #Productos tipo: Carnes
-carne_1 = Carne(156, "bandeja de matambre", "vacas muertas", 5000, 7, 2, 3)
-carne_2 = Carne(198, "bandeja de bondiola", "vacas muertas", 5000, 13, 2, 4)
-carne_3 = Carne(102, "bandeja de vacio", "vacas muertas", 15000, 17, 1, 2)
+carne_1 = Carne(156, "bandeja de matambre", "vacas muertas", 5000, 7, 2, 3, "carne")
+carne_2 = Carne(198, "bandeja de bondiola", "vacas muertas", 5000, 13, 2, 4, "carne")
+carne_3 = Carne(102, "bandeja de vacio", "vacas muertas", 15000, 17, 1, 2, "carne")
 #Productos tipo: Panes 
-pan_1 = Pan(210, "pan francés", "la Espiga", 800, 20, 5, 0.5, 10)
-pan_2 = Pan(211, "pan de molde", "bimbo", 1200, 15, 3, 0.8, 5)
-pan_3 = Pan(212, "pan negro", "la Nona", 1500, 30, 10, 0.3, 12)
+pan_1 = Pan(210, "pan francés", "la Espiga", 800, 20, 5, 0.5, 10, "pan")
+pan_2 = Pan(211, "pan de molde", "bimbo", 1200, 15, 3, 0.8, 5, "pan")
+pan_3 = Pan(212, "pan negro", "la Nona", 1500, 30, 10, 0.3, 12, "pan")
 #Productos tipo: Verduras
-verdura_1 = Verdura(310, "tomate", "Campo Verde", 500, 20, 5, 1)
-verdura_2 = Verdura(311, "lechuga", "Campo Verde", 300, 15, 3, 1)
+verdura_1 = Verdura(310, "tomate", "Campo Verde", 500, 20, 5, 1, "verdura")
+verdura_2 = Verdura(311, "lechuga", "Campo Verde", 300, 15, 3, 1, "verdura")
     
     
 Carnes = Carniceria(100, "Carniceria", [carne_1, carne_2, carne_3], 37)

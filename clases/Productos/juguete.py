@@ -1,8 +1,8 @@
 from clases.Productos.producto import Producto
 
 class Juguete(Producto):
-    def __init__(self, cod, nom, marca, precio, st, st_min):
-        super().__init__(cod, nom, marca, precio, st, st_min)
+    def __init__(self, cod, nom, marca, precio, st, st_min, tipo):
+        super().__init__(cod, nom, marca, precio, st, st_min, tipo)
 
     def mi_precio(self)-> float:
         return self.precio
@@ -21,6 +21,9 @@ class Juguete(Producto):
     
     def mi_stock_min(self):
         return self.stock_min
+    
+    def mi_tipo(self):
+        return self.tipo
     
     def modif_stock(self, nuevo_stock):
         self.stock = nuevo_stock
