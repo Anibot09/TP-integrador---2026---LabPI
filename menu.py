@@ -152,8 +152,8 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                         print(f"Su total es: {carrito.mi_total()}")
                 case 7:
                     print("\n--- Carrito final ---")
-                    for prod in carrito.mis_productos():
-                        print(prod)
+                    for producto, cantidad in carrito.mis_productos():
+                            print(f"{producto} | Cantidad: {cantidad}")
                     print(f"Total a pagar: {carrito.total}")
                     print("¡Gracias por su compra!Hasta la próxima :)")
                     op = 0

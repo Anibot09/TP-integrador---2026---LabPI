@@ -91,7 +91,7 @@ promociones.agregar_promo("513", "jugo de naranja", "citric", "30 OFF (2da/misma
 promociones.agregar_promo("510", "coca cola", "coca-cola company", "30 OFF (2da/misma marca)")
 promociones.agregar_promo("622", "crema", "avon", "50 OFF")   
 promociones.agregar_promo("674", "suavizante lavanda", "vivere", "50 OFF")   
-promociones.agregar_promo("678", "jabon liquido", "dove", "50 OFF")   
+promociones.agregar_promo("678", "jabon liquido", "dove", "50 OFF") 
 
 dep = Deposito(234, 45, "Depot")
 

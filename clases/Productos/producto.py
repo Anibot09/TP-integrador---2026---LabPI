@@ -35,6 +35,10 @@ class Producto(ABC):
     @abstractmethod
     def mi_stock_min(self):
         return self.stock_min
+    
+    @abstractmethod
+    def mi_tipo(self):
+        return self.tipo
 
     @abstractmethod
     def modif_stock(self, nuevo_stock):

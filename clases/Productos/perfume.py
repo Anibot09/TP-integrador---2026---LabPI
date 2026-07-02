@@ -24,7 +24,7 @@ class Perfume(Producto):
         return self.stock_min
     
     def mi_tipo(self):
-        return "perfume"
+        return self.tipo
     
     def modif_stock(self, nuevo_stock):
         self.stock = nuevo_stock

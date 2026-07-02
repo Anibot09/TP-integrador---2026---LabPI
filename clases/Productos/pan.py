@@ -4,7 +4,7 @@ class Pan(Producto):
     def __init__(self, cod, nom, marca, price, st, st_min, tipo, peso, bolsones):
         super().__init__(cod, nom, marca, price, st, st_min, tipo)
         self.peso = peso
-        self.cant_bolsones = bolsones
+        self.bolsones = bolsones
         
     def mi_precio(self)-> float:
         return self.precio
@@ -16,7 +16,7 @@ class Pan(Producto):
         return self.peso
     
     def mis_bolsones(self)->int:
-        return self.cant_bolsones
+        return self.bolsones
     
     def mi_nombre(self)-> str:
         return self.nombre
