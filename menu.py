@@ -74,7 +74,7 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                                 print("\n1. Agregar producto al carrito.")
                                 print("2. Ver stock de un producto.")
                                 print("3. Volver a las góndolas.")
-                                print("4. Volver al menú principal.")
+                                print("0. Volver al menú principal.")
                                
                                 try:
                                     opcion = int(input("Seleccione una opción: "))
@@ -86,13 +86,15 @@ def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor,
                                         break
                                     elif opcion == 3:
                                         break
-                                    elif opcion == 4:
+                                    elif opcion == 0:
                                         break
                                     else:
                                         raise ValueError
+     
                                 except ValueError:
-                                    print("Ingrese un numero del 1 al 4")
-
+                                    print("Ingrese un numero del 1 al 3")
+                            if opcion == 0:
+                                    break
                         except ValueError:
                             print("Debe ingresar un número")              
                 case 2:
