@@ -1,6 +1,10 @@
 from clases.Productos.juguete import Juguete
 
+
+
 class Jugueteria():
+
+    
     def __init__(self, cod, nom, juguetes:list[Juguete], cant_p):
         self.codigo = cod
         self.nombre = nom

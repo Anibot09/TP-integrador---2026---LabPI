@@ -1,6 +1,10 @@
 from clases.Productos.producto import Producto
 
+
+
 class Electro(Producto):
+
+
     def __init__(self, cod, nom, marca, price, st, st_min, tipo, garantia):
         super().__init__(cod, nom, marca, price, st, st_min, tipo)
         self.garantia = garantia
@@ -23,7 +27,7 @@ class Electro(Producto):
     def mi_stock_min(self):
         return self.stock_min
     
-    def mi_tipo(self):
+    def mi_tipo(self)-> str:
         return self.tipo
         
     def modif_stock(self, nuevo_stock):

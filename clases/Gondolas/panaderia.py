@@ -1,6 +1,10 @@
 from clases.Productos.pan import Pan
 
+
+
 class Panaderia():
+
+    
     def __init__(self, cod, nom, panes:list[Pan], cant_p):
         self.codigo = cod
         self.nombre = nom

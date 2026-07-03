@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 
+
+
 class Producto(ABC):
+
+
     def __init__(self, cod, nom, marca, price, st, st_min, tipo):
         self.codigoBarra = cod
         self.nombre = nom
@@ -37,7 +41,7 @@ class Producto(ABC):
         return self.stock_min
     
     @abstractmethod
-    def mi_tipo(self):
+    def mi_tipo(self)-> str:
         return self.tipo
 
     @abstractmethod

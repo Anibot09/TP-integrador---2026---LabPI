@@ -1,5 +1,10 @@
 from clases.Productos.carne import Carne
+
+
+
 class Carniceria():
+
+    
     def __init__(self, cod, nom, carnes:list[Carne], cant_p):
         self.codigo = cod
         self.nombre = nom

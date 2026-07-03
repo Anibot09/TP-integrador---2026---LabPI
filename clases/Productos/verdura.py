@@ -1,6 +1,10 @@
 from clases.Productos.producto import Producto
 
+
+
 class Verdura(Producto):
+
+
     def __init__(self, cod, nom, marca, price, st, st_min, tipo, peso):
         super().__init__(cod, nom, marca, price, st, st_min, tipo)
         self.peso = peso    
@@ -19,14 +23,14 @@ class Verdura(Producto):
     
     def mi_marca(self)-> str:
         return self.marca
-    # agrefar flechita int str
+    
     def mi_stock(self):
         return self.stock
     
     def mi_stock_min(self):
         return self.stock_min
     
-    def mi_tipo(self):
+    def mi_tipo(self)-> str:
         return self.tipo
     
     def modif_stock(self, nuevo_stock):

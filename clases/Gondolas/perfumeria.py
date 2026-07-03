@@ -1,7 +1,10 @@
-
 from clases.Productos.perfume import Perfume
 
+
+
 class Perfumeria():
+
+    
     def __init__(self, cod, nom, perfumes:list[Perfume], cant_p):
         self.codigo = cod
         self.nombre = nom

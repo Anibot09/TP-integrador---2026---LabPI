@@ -2,7 +2,11 @@ from clases.Productos.producto import Producto
 from clases.deposito import Deposito
 from clases.pedido import Pedido
 
+
+
 class Proveedor:
+
+    
     def __init__(self, nom: str, cont: str):
         self.nombre = nom
         self.contacto = cont 

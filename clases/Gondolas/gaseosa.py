@@ -1,5 +1,10 @@
 from clases.Productos.liquido import Liquido
+
+
+
 class GondolaGaseosa():
+
+    
     def __init__(self, cod, nom, bebidas:list[Liquido], cant_p):
         self.codigo = cod
         self.nombre = nom

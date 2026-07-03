@@ -28,6 +28,8 @@ from clases.inventario import Inventario
 import menu
 from catalogo import Negocio, promociones, dep
 
+
+
 def main():
 
     almacen = Almacen(654, promociones, Negocio)

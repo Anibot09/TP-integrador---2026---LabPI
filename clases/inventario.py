@@ -12,7 +12,11 @@ from clases.Productos.liquido import Liquido
 from clases.Productos.carne import Carne
 from clases.Productos.verdura import Verdura
 
+
+
 class Inventario():
+
+    
     def __init__(self, num, dep: Deposito, gond:list):
         self.num = num
         self.deposito = dep

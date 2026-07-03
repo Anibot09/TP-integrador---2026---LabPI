@@ -10,13 +10,16 @@ from clases.pedido import Pedido
 from clases.deposito import Deposito
 from clases.errores import vacioError, no_encontradoError
 
+
+
 class Almacen():
+
+
     def __init__(self, num, promos: Promociones, gond: list):
         self.num_id = num
         self.promociones = promos
         self.gondolas = gond
        
-
     def determinar_precio(self, producto, cant):#Toma en cuenta cantidades y peso para determinar precios de ciertos productos. 
         return producto.calcular_precio(cant)
             
@@ -95,7 +98,6 @@ class Almacen():
         proveedor.recibirPedido_reposicion(pedido, dep)
         return
         
-    
     def monitorear_compra(self, producto_nom, cant, carrito: Carrito, inventario: Inventario, proveedor : Proveedor, dep : Deposito): #chequea que el estado de los productos y gondolas al  realizar la compra
         gondolas = self.gondolas
         agregado = 0
@@ -143,7 +145,7 @@ class Almacen():
         except no_encontradoError:
                 print("Producto no encontrado, por favor vuelva ingresarlo")
                 return False
-            
+
 
 #devuelve bool
     def monitorear_eliminacion(self, producto, cant, carrito: Carrito):

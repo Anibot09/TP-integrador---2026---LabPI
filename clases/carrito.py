@@ -2,13 +2,15 @@ from clases.errores import vacioError, no_encontradoError
 from clases.promociones import Promociones
 
 
+
 class Carrito ():
+
+
     def __init__(self):
         self.total : float = 0.0 
         self.productos : list = []
         self.cant_productos : int = 0
     
-
     def agregarProducto(self, producto, cant:int, precio_final):
         # Buscar si el producto ya existe en el carrito
         encontrado = False
@@ -33,7 +35,6 @@ class Carrito ():
 
         return True
                         
-
     def eliminarProducto(self, producto_n:str, cantidad:int): #recibe lo que quiere eliminar y la cantidad
         try:
             encontrado = 0

@@ -1,6 +1,10 @@
 from clases.Productos.electro import Electro
 
+
+
 class Electrodomestiscos():
+
+    
     def __init__(self, cod, nom, electrodomesticos:list[Electro], cant_p):
         self.codigo = cod
         self.nombre = nom

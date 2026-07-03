@@ -1,3 +1,6 @@
+
+
+
 def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
     while True:
         prod = str(input("\nIngrese el nombre del producto que desea agregar: ")).lower()
@@ -28,10 +31,13 @@ def caso_menu_agregar(almacen, carrito,inventario, proveedor,dep):
         if opcion == 2:
                 return
     
-            
+
+
 def caso_menu_ver_stock(catalogo, carrito):
     prod = input("Ingrese el nombre del producto:")
     carrito.ver_stock_producto(catalogo, prod)
+
+
 
 def mostrar_menu(catalogo, carrito, inventario, promociones, almacen, proveedor, dep):
     op = -1

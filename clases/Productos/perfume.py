@@ -1,6 +1,10 @@
 from clases.Productos.producto import Producto
 
+
+
 class Perfume(Producto):
+
+
     def __init__(self, codigo, nombre, marca, precio, stock, st_min, tipo, ml):
         super().__init__(codigo, nombre, marca, precio, stock, st_min, tipo)
         self.volumen = ml
@@ -23,7 +27,7 @@ class Perfume(Producto):
     def mi_stock_min(self):
         return self.stock_min
     
-    def mi_tipo(self):
+    def mi_tipo(self)-> str:
         return self.tipo
     
     def modif_stock(self, nuevo_stock):
